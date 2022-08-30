@@ -1,5 +1,26 @@
 @import "font-awesome";
 
+nav{
+    font-family: 'Cabin', sans-serif;
+    font-size:20px;
+    .logo{
+        font-size: larger;
+        margin-right: 10px;
+        font-family: 'Lobster', cursive;
+    }
+    .logo:hover{
+        color: red;
+    }
+    .nav{
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+}
+
+.shipping{
+    margin-top: 100px;
+}
+
 .signup{
     margin-bottom: 200px;
 }
@@ -16,4 +37,8 @@ margin: 0 0 30px 0;
 .form-control {
 color: red;
 }
+}
+
+footer{
+    margin-top: 30px;
 }
