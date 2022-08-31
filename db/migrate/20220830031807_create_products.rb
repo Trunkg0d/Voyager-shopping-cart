@@ -10,5 +10,6 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.text :description
       t.timestamps
     end
+    add_index :products, [:shop_id, :created_at]
   end
 end

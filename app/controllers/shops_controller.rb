@@ -4,6 +4,7 @@ class ShopsController < ApplicationController
 
     def show
         @shop = Shop.find(params[:id]) 
+        @products = @shop.products.paginate(page: params[:page])
     end
 
     def new
@@ -30,6 +31,11 @@ class ShopsController < ApplicationController
     end
 
     def destroy
+    end
+
+    #Shop product
+    def add_product
+        @product = current_shop.products.build if logged_in?
     end
 
     private
