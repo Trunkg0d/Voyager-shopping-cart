@@ -2,7 +2,7 @@
     <div class="col mb-5">
     <div class="card h-100">
         <!-- Product image-->
-        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <%= image_tag product.image if product.image.attached? %>
         <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">
@@ -10,7 +10,7 @@
                 <h5 class="fw-bolder"><%= product.name %></h5>
                 <!-- Product reviews-->
                 <div class="d-flex justify-content-center small text-warning mb-2">
-                    <div class="bi-star-fill"><%= product.description %></div>
+                    <div class="description bi-star-fill"><%= product.description %></div>
                 </div>
                 <!-- Product price-->
                 <%= product.price %>
@@ -22,7 +22,7 @@
         </div>
          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-                <%= link_to "View", product_path, class: "btn btn-outline-dark mt-auto" %>
+                <%= link_to "View", product_path(product), class: "btn btn-outline-dark mt-auto" %>
             </div>
         </div>
     </div>

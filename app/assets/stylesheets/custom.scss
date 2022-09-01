@@ -42,3 +42,12 @@ color: red;
 footer{
     margin-top: 30px;
 }
+
+
+// Description reduce
+div.description {
+    white-space: nowrap; 
+    width: 400px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
