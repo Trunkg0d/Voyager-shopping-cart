@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   #shop
   get '/shop_signup', to: 'shops#new'
   get '/shop_add_product', to: 'shops#add_product'
+
+  #product
   resources :shops
-  resources :products, only: [:create, :update, :destroy]
+  resources :products
 end

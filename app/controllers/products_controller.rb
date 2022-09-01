@@ -1,4 +1,12 @@
 class ProductsController < ApplicationController
+
+    def index
+    end
+
+    def show
+        @product = current_shop.products.find_by(id: 2)
+    end
+
     def create
         @product = current_shop.products.build(product_params)
         if @product.save
