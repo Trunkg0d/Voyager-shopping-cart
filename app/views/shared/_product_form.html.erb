@@ -12,7 +12,7 @@
                 <%= form_with(model: @product, local: true) do |f| %>
                     <%= render 'shared/error_messages', object: f.object %>
                     
-                    <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :name %>
@@ -21,7 +21,7 @@
                   </div>
                     
                     
-                    <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :price %>
@@ -29,7 +29,7 @@
                     </div>
                   </div>
                     
-                    <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :color %>
@@ -37,7 +37,7 @@
                     </div>
                   </div>
 
-                    <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-location-dot fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :size %>
@@ -45,7 +45,7 @@
                     </div>
                   </div>
 
-                    <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :quantity_remain %>
@@ -53,7 +53,7 @@
                     </div>
                   </div>
 
-                    <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :description, "Description" %>
@@ -61,8 +61,11 @@
                     </div>
                   </div>
 
-
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <span class="image">
+                    <%= f.file_field :image %>
+                  </span>
+                  
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <%= f.submit "Add product", class: "btn btn-primary" %>
                   </div>
                 <% end %>

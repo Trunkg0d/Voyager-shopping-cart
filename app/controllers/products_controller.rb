@@ -4,11 +4,12 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = current_shop.products.find_by(id: 2)
+        @product = Product.find_by(id: params[:id], shop: current_shop)
     end
 
     def create
         @product = current_shop.products.build(product_params)
+        @product.image.attach(params[:product][:image])
         if @product.save
             flash[:success] = "Product created!"
             redirect_to shop_path(current_shop.id)
@@ -28,6 +29,6 @@ class ProductsController < ApplicationController
 
     private
         def product_params
-            params.require(:product).permit(:name, :color, :size, :price, :quantity_remain, :description)
+            params.require(:product).permit(:name, :color, :size, :price, :quantity_remain, :description, :image)
         end
 end
