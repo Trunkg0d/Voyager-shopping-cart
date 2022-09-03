@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
 
     def create
         @product = current_shop.products.build(product_params)
-        @product.image.attach(params[:product][:image])
         if @product.save
             flash[:success] = "Product created!"
             redirect_to shop_path(current_shop.id)

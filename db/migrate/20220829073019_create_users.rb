@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :avatar, default: "http://cdn.shopify.com/s/files/1/0612/1085/3627/products/CatPirate_DIN_LQ_1200x1200.jpg?v=1638441950"
+      t.string :avatar, default: "user.png"
       t.string :phone
       t.string :address
       t.integer :role, default: 1
