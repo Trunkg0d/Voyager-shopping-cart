@@ -3,5 +3,5 @@ class Product < ApplicationRecord
     has_many :product_categories
     has_many :categories, through: :product_categories
     default_scope -> {order(created_at: :desc)}
-    has_one_attached :image
+    mount_uploader :image, ImageUploader
 end
