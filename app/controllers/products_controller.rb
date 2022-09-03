@@ -18,9 +18,17 @@ class ProductsController < ApplicationController
     end
 
     def edit
+        @product = Product.find_by(id: params[:id], shop: current_shop)
     end
 
     def update
+        @product = Product.find_by(id: params[:id], shop: current_shop)
+        if @product.update(product_params)
+            flash[:success] = "Product updated successfully."
+            redirect_to shop_path(current_shop)
+        else
+            render 'edit'
+        end
     end
 
     def destroy
