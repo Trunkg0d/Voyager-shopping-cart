@@ -1,6 +1,17 @@
 <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
+    <% if @user.avatar?%>
+        <%= image_tag @user.avatar.thumb.url %>
+    <%else%>
+        <%= image_tag "user.png", height:100, width:100%>
+    <%end%>
+
+    <span class="avatar">
+        <%= f.label :avatar, yield(:img_button), class: "btn btn-primary", onclick:"document.getElementById('hide-button').click()" %>
+        <%= f.file_field :avatar, id:"hide-button"%>
+    </span>
+
     <div class="d-flex flex-row align-items-center mb-4">
         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
         <div class="form-outline flex-fill mb-0">
@@ -55,7 +66,4 @@
         <%= f.submit yield(:button), class: "btn btn-primary" %>
     </div>
 
-    <span class="avatar">
-        <%= f.file_field :avatar %>
-    </span>
 <% end %>
