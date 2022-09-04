@@ -32,6 +32,9 @@ class ProductsController < ApplicationController
     end
 
     def destroy
+        Product.find_by(id: params[:id], shop: current_shop).destroy
+        flash[:success] = "Product deleted"
+        redirect_to shop_path(current_shop)
     end
 
     private

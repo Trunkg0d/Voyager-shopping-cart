@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-md-6">
             <%# <img src="/images/slider1.png" alt="Image" class="img-fluid"> %>
-            <%= image_tag "https://media.wired.com/photos/5fa5c9e7ba670daaf8e97a79/master/w_960,c_limit/Gear-Xero-HFS-SOURCE-Xero-Shoes.jpg", class: "img-fluid"%>
+            <%= image_tag @product.image.thumb.url, class: "img-fluid"%>
           </div>
           <div class="col-md-6">
             <h2 class="text-black"><%= @product.name %></h2>
