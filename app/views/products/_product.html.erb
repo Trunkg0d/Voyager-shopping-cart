@@ -29,21 +29,24 @@
         </div>
 
         <%# Prevent edit and delete in show all products view %>
-        <% if request.path == shop_path(current_shop.id) %>
-            <% if product.shop == current_shop %>
-                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                    <div class="text-center">
-                        <%= link_to "Edit", edit_product_path(product), class:"btn btn-outline-dark mt-auto" %>
-                    </div>
-                </div>
 
-                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                    <div class="text-center">
-                        <%= button_to "Delete", product_path(product), method: :delete, class:"btn btn-outline-dark mt-auto" %>
+        <% if !current_shop.nil? %>
+            <% if request.path == shop_path(current_shop.id) %>
+                <% if product.shop == current_shop %>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <%= link_to "Edit", edit_product_path(product), class:"btn btn-outline-dark mt-auto" %>
+                        </div>
                     </div>
-                </div>
-            <% end %>
-        <% end %>        
+
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <%= button_to "Delete", product_path(product), method: :delete, class:"btn btn-outline-dark mt-auto" %>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>        
+        <% end %>
 
     </div>
 </div>
