@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_034155) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_05_135522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,13 +57,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_034155) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "avatar", default: "http://cdn.shopify.com/s/files/1/0612/1085/3627/products/CatPirate_DIN_LQ_1200x1200.jpg?v=1638441950"
+    t.string "avatar", default: "user.png"
     t.string "phone"
     t.string "address"
     t.integer "role", default: 1
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
+    t.string "remember_digest"
   end
 
 end
