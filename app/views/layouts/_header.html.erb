@@ -15,6 +15,10 @@
         <li class="nav-item">
           <%=link_to "Contact", "#", class:"nav-link active"%>
         </li>
+
+        <li class="nav-item">
+          <%=link_to "Shop", products_path , class:"nav-link active"%>
+        </li>
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +32,7 @@
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Shop
+                  Your Shop
                 </a>  
                 <ul class="dropdown-menu", data-turbolinks="false">
                   <%if (create_shop?)%>
