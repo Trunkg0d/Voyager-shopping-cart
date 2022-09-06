@@ -32,9 +32,9 @@ shops = Shop.order(:created_at).take(3)
         |shop|
         for i in 0...3 do
             if i%2 == 0
-                image = "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/f2ff7f7a-0e13-4148-8eb4-60b83e86f99b/air-force-1-07-lv8-shoes-BS9f21.png"
+                image = "nike1.png"
             else
-                image = "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/08105925-b788-48d7-8381-99257fcd0281/air-force-1-07-shoes-dbvfjQ.png"
+                image = "nike2.png"
             end
             shop.products.create!(name: "Nike air force 1", color: "Red", size:"XXL",
                 price: 15000, quantity_remain: 5, description: description, image: image)
