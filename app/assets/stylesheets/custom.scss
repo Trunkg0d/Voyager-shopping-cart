@@ -33,7 +33,11 @@ nav{
 
 /* forms */
 
-#hide-button{
+#hide-button {
+    display: none;
+}
+
+#product_image_button{
     display: none;
 }
 #error_explanation {

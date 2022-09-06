@@ -10,19 +10,30 @@
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Your Product</p>
                 <%= form_with(model: @product, local: true) do |f| %>
-                    <%= render 'shared/error_messages', object: f.object %>
+                  <%= render 'shared/error_messages', object: f.object %>
+
+                  <% if @product.image?%>
+                    <%= image_tag @product.image.thumb.url %>
+                  <%else%>
+                    <%= image_tag "product.png", height:100, width:100%>
+                  <%end%>
+
+                  <span class="image">
+                    <%= f.label :image, "Add Product Image", class: "btn btn-outline-dark mt-auto", onclick:"document.getElementById('product_image_button').click()" %>
+                    <%= f.file_field :image, id:"product_image_button" %>
+                  </span>
                     
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-product-hunt fa-brands fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <%= f.label :name %>
+                        <%= f.label :name, "Product Name" %>
                         <%= f.text_field :name, class: 'form-control' %>
                     </div>
                   </div>
                     
                     
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-solid fa-money-check-dollar fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :price %>
                         <%= f.number_field :price, class: 'form-control' %>
@@ -30,7 +41,7 @@
                   </div>
                     
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-solid fa-palette fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :color %>
                         <%= f.text_field :color, class: 'form-control' %>
@@ -38,7 +49,7 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-location-dot fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-solid fa-maximize fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :size %>
                         <%= f.text_field :size, class: 'form-control' %>
@@ -46,10 +57,18 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-solid fa-box-open fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :quantity_remain %>
                         <%= f.number_field :quantity_remain, class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <%= f.label :description, "Description" %>
+                        <%= f.text_field :description, class: 'form-control' %>
                     </div>
                   </div>
 
@@ -62,20 +81,10 @@
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                        <%= f.label :description, "Description" %>
-                        <%= f.text_field :description, class: 'form-control' %>
-                    </div>
-                  </div>
-
-                  <span class="image">
-                    <%= f.file_field :image %>
-                  </span>
+                  
                   
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <%= f.submit yield(:product_btn), class: "btn btn-primary" %>
+                    <%= f.submit yield(:product_btn), class: "btn btn-outline-dark mt-auto" %>
                   </div>
                 <% end %>
             </div>
