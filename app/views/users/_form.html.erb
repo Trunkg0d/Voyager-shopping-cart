@@ -8,7 +8,7 @@
     <%end%>
 
     <span class="avatar">
-        <%= f.label :avatar, yield(:img_button), class: "btn btn-primary", onclick:"document.getElementById('hide-button').click()" %>
+        <%= f.label :avatar, yield(:img_button), class: "btn btn-outline-dark mt-auto", onclick:"document.getElementById('hide-button').click()" %>
         <%= f.file_field :avatar, id:"hide-button"%>
     </span>
 
@@ -63,7 +63,7 @@
 
 
     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-        <%= f.submit yield(:button), class: "btn btn-primary" %>
+        <%= f.submit yield(:button), class: "btn btn-outline-dark mt-auto" %>
     </div>
 
 <% end %>
