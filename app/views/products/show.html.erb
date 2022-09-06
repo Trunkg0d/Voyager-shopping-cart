@@ -24,6 +24,14 @@
             <p><strong class="text-primary h4">Color: <%= @product.color %></strong></p>
             <p><strong class="text-primary h4">Size: <%= @product.size %></strong></p>
             <p><strong class="text-primary h4">Price: <%= @product.price %></strong></p>
+            <p>
+              <strong class="text-primary h4">
+                Categories: 
+                <% @product.categories.each do |cate| %>
+                  <%= cate.name %>
+                <% end %>
+              </strong>
+            </p>
             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
                 <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>

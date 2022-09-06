@@ -53,6 +53,14 @@
                     </div>
                   </div>
 
+                  <div class="col-xs-4">
+                    <div class="form-group">
+                      <%= f.label "Categories:" %><br />
+                      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+                        <% b.label(class: "checkbox-inline input_checkbox") {b.check_box(class: "checkbox") + b.text } %>
+                      <% end %>
+                  </div>
+
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
