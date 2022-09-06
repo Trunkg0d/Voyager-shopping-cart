@@ -25,8 +25,8 @@ users.each{
     Shop.create!(name: "Tiki", description: description, avatar: avatar, user_id: user.id )
 }
 
-shops = Shop.order(:created_at).take(6)
-50.times do
+shops = Shop.order(:created_at).take(3)
+5.times do
     description = "Designed by Bruce Kilgore and introduced in 1982, the Air Force 1 was the first ever basketball shoe to feature Nike Air technology, revolutionizing the game and sneaker culture forever"
     shops.each{
         |shop|
@@ -40,4 +40,10 @@ shops = Shop.order(:created_at).take(6)
                 price: 15000, quantity_remain: 5, description: description, image: image)
         end
 }
+end
+
+cates = ["Lifestyle", "Jordan", "Running", "Basketball", "Football", "Training & Gym", "Skateboarding", "Golf", "Tennis",
+        "Athletics", "Walking"]
+cates.each do |cate|
+    Category.create!(name: cate)
 end

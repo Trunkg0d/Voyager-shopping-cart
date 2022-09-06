@@ -6,3 +6,15 @@ class CreateCategories < ActiveRecord::Migration[7.0]
     end
   end
 end
+
+# Lifestyle
+# Jordan
+# Running
+# Basketball
+# Football
+# Training & Gym
+# Skateboarding
+# Golf
+# Tennis
+# Athletics
+# Walking
