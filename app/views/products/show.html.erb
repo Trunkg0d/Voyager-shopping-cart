@@ -41,7 +41,9 @@
             </div>
           </div>
           </div>
-          <p><a href="#" class="btn btn-outline-dark mt-auto">Add To Cart</a></p>
+          <p>
+            <%= button_to "Add to cart", add_product_path, method: :post, class:"btn btn-outline-dark mt-auto" %>
+          </p>
         </div>
       </div>
     </div>
