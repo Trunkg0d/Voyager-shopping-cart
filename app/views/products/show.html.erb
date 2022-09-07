@@ -30,7 +30,7 @@
                 <p class="btn btn-secondary btn-sm"><%= cate.name %></p>
             <% end %>
           </p>
-          <div class="mb-5">
+          <%# <div class="mb-5">
             <div class="input-group mb-3" style="max-width: 120px;">
             <div class="input-group-prepend">
               <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
@@ -40,10 +40,12 @@
               <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
             </div>
           </div>
-          </div>
-          <p>
-            <%= button_to "Add to cart", add_product_path, method: :post, class:"btn btn-outline-dark mt-auto" %>
-          </p>
+          </div> %>
+          <%= form_with url: add_product_path do |form| %>
+              <%= form.label :quantity %>
+              <%= form.text_field :quantity %>
+              <%= form.submit "Add Product" %>
+          <% end %>
         </div>
       </div>
     </div>
