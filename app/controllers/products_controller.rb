@@ -52,10 +52,8 @@ class ProductsController < ApplicationController
         total += @cart_item.product.price * @cart_item.quantity
         @cart_item.cart_session.update_attribute(:sum_money, total)
 
-        puts "hello"
-
         if @cart_item.save
-          flash[:success] = "Success roi em oi"
+          flash[:success] = "Add product successfully"
         else 
           render 'new'
         end
