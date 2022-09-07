@@ -41,9 +41,12 @@
             </div>
           </div>
           </div>
-          <p>
-            <%= button_to "Add to cart", add_product_path, method: :post, class:"btn btn-outline-dark mt-auto" %>
-          </p>
+          <%= form_with url: add_product_path do |form| %>
+              <%= form.label :quantity %>
+              <%= form.text_field :quantity %>
+              <%= form.submit %>
+              <%#= button_to "Add to cart", add_product_path, method: :post, class: "btn btn-secondary" %>
+          <% end %>
         </div>
       </div>
     </div>
