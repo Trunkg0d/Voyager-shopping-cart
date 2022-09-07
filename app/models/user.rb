@@ -16,6 +16,8 @@ class User < ApplicationRecord
     #Relation ship with shop
     has_one :shop 
 
+    has_many :cart_sessions
+
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost

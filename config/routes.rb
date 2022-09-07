@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   get '/shop_add_product', to: 'shops#add_product'
 
   #product
+  post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
+
+
   resources :shops
   resources :products
+  resources :cart_sessions
+  resources :cart_items
 end

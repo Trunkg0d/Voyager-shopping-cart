@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+    before_action :createCartSession, only: [:getProduct ]
     def index
         @products = Product.all
     end
@@ -36,6 +36,19 @@ class ProductsController < ApplicationController
         Product.find_by(id: params[:id], shop: current_shop).destroy
         flash[:success] = "Product deleted"
         redirect_to shop_path(current_shop)
+    end
+
+    def getProduct
+        @product = Product.find(params[:id])
+        puts "Hello"
+        puts @product
+        getId(@product)
+    end
+
+    def createCartSession
+        @cart_session = CartSession.new
+        @cart_session.user_id = session[:user_id]
+        @cart_session.save
     end
 
     private

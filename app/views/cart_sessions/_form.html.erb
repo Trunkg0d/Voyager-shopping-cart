@@ -1,0 +1,22 @@
+<%= form_with(model: cart_session) do |form| %>
+  <% if cart_session.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cart_session.errors.count, "error") %> prohibited this cart_session from being saved:</h2>
+
+      <ul>
+        <% cart_session.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%=form.label :sum_money%>
+    <%=form.text_field :sum_money%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
