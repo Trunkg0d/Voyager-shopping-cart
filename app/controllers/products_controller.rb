@@ -40,9 +40,9 @@ class ProductsController < ApplicationController
 
     def getProduct
         @product = Product.find(params[:id])
-        puts "Hello"
-        puts @product
         getId(@product)
+        redirect_to new_cart_item_path
+        flash[:success] = "Product add successfully"
     end
 
     def createCartSession
