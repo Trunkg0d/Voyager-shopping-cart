@@ -90,4 +90,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.force_ssl = true
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.default_url_options = { host: ENV['DOMAIN_URL'] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => '54373f4e8f6f07',
+    :password => 'e23bbccc4e73b9',
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
 end
