@@ -3,7 +3,9 @@ User.create!(name: "Example User",
     phone: "0985879454",
     address: "My Tho, Tien Giang, Viet Nam",
     password: "foobar",
-    password_confirmation: "foobar")
+    password_confirmation: "foobar",
+    activated: true,
+    activated_at: Time.zone.now)
 
 25.times do |n|
     name = "Trunk Lee"
@@ -14,7 +16,9 @@ User.create!(name: "Example User",
     phone: "0985879454",
     address: "My Tho, Tien Giang, Viet Nam",
     password: password,
-    password_confirmation: password)
+    password_confirmation: password,
+    activated: true,
+    activated_at: Time.zone.now)
 end
 
 users = User.order(:created_at).take(26)
