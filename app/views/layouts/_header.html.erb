@@ -45,6 +45,10 @@
                   <%end%>
                 </ul>
               </li>
+
+              <li class="nav-item">
+                <%=link_to "Cart", cart_session_path(current_cart_session), class:"nav-link active"%>
+              </li>
           <%else%>
               <ul class="dropdown-menu", data-turbolinks="false">
                 <%=link_to "Sign Up", signup_path, class:"dropdown-item"%>
@@ -53,9 +57,6 @@
           <%end%>
         </li>
 
-        <li class="nav-item">
-          <%=link_to "Cart", cart_path, class:"nav-link active"%>
-        </li>
 
       </ul>
       <form class="d-flex" role="search">

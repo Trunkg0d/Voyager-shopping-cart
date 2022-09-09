@@ -8,6 +8,7 @@ class CartSessionsController < ApplicationController
 
   # GET /cart_sessions/1 or /cart_sessions/1.json
   def show
+    
   end
 
   # GET /cart_sessions/new
