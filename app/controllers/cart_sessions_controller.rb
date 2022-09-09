@@ -3,7 +3,6 @@ class CartSessionsController < ApplicationController
 
   # GET /cart_sessions or /cart_sessions.json
   def index
-    @cart_sessions = CartSession.all
   end
 
   # GET /cart_sessions/1 or /cart_sessions/1.json

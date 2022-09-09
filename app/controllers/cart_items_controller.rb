@@ -3,7 +3,6 @@ class CartItemsController < ApplicationController
 
   # GET /cart_items or /cart_items.json
   def index
-    @cart_items = CartItem.all
   end
 
   # GET /cart_items/1 or /cart_items/1.json
@@ -54,12 +53,12 @@ class CartItemsController < ApplicationController
 
   # DELETE /cart_items/1 or /cart_items/1.json
   def destroy
+    total = @cart_item.cart_session.sum_money
+    total -= @cart_item.product.price * @cart_item.quantity
+    @cart_item.cart_session.update_attribute(:sum_money, total)
     @cart_item.destroy
-
-    respond_to do |format|
-      format.html { redirect_to cart_items_url, notice: "Cart item was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Cart item was successfully delete."
+    redirect_to cart_session_path(current_cart_session)
   end
 
   private

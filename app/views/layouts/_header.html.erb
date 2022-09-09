@@ -46,9 +46,11 @@
                 </ul>
               </li>
 
-              <li class="nav-item">
-                <%=link_to "Cart", cart_session_path(current_cart_session), class:"nav-link active"%>
-              </li>
+              <% if !current_cart_session.nil?%>
+                <li class="nav-item">
+                  <%=link_to "Cart", cart_session_path(current_cart_session), class:"nav-link active"%>
+                </li>
+              <% end %>
           <%else%>
               <ul class="dropdown-menu", data-turbolinks="false">
                 <%=link_to "Sign Up", signup_path, class:"dropdown-item"%>
