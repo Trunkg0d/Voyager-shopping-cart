@@ -43,7 +43,8 @@
                         <div style="width: 80px;">
                           <h5 class="mb-0">$<%= cart_item.product.price%></h5>
                         </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        <%# <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a> %>
+                        <%= button_to "Delete", cart_item, method: :delete %>
                       </div>
                     </div>
                   </div>

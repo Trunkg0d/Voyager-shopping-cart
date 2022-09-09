@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
-<div>
+<%= render @cart_session %>
+<%# <div> %>
   <%#= link_to "Edit this cart session", edit_cart_session_path(@cart_session) %> 
   <%#= link_to "Back to cart sessions", cart_sessions_path %>
 
-  <%= button_to "Destroy this cart session", @cart_session, method: :delete %>
-</div>
+  <%#= button_to "Destroy this cart session", @cart_session, method: :delete %>
+<%# </div> %>
 
-<%= render @cart_session %>
+
