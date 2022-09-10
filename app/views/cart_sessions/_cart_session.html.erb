@@ -43,12 +43,18 @@
                           <div style="width: 80px;">
                             <h5 class="mb-0">$<%= cart_item.product.price%></h5>
                           </div>
-                          <%= form_with url: cart_item_path(cart_item), method: :put do |form| %>
-                            <%= form.label :quantity_cart_item %>
-                            <%= form.text_field :quantity_cart_item %>
-                            <%= form.submit "Update quantity" %>
-                          <% end %>
-                          <%= button_to "Delete", cart_item, method: :delete %>
+
+                          <div>
+                            <%= form_with url: cart_item_path(cart_item), method: :put do |form| %>
+                              <%= form.label :quantity_cart_item, "edit quantity" %>
+                              <%= form.number_field :quantity_cart_item, placeholder: "#{cart_item.quantity}" %>
+                              <%= form.submit "save" %>
+                            <% end %>
+                          </div>
+
+                          <div>
+                            <%= button_to "Delete", cart_item, method: :delete %>
+                          </div>
                         </div>
                       </div>
                     </div>
