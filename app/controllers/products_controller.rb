@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
             redirect_to shop_path(current_shop.id)
         else
             render 'static_pages/home'
-        end        
+        end
     end
 
     def edit
@@ -54,11 +54,11 @@ class ProductsController < ApplicationController
 
         if @cart_item.save
           flash[:success] = "Add product successfully"
-        else 
+        else
           render 'new'
         end
 
-        redirect_to @product    
+        redirect_to @product
     end
 
     def createCartSession
