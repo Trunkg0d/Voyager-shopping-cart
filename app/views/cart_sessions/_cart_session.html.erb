@@ -24,34 +24,36 @@
                 </div>
 
                 <% cart_session.cart_items.each do |cart_item| %>
-            <div class="card mb-3">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
                             <%= image_tag cart_item.product.image.thumb.url, :style => "border: 1px solid gray; width: 65px" if cart_item.product.image? %>
+                          </div>
+                          <div class="ms-3">
+                            <h5><%= cart_item.product.name%></h5>
+                            <p class="small mb-0"><%= cart_item.product.color%></p>
+                          </div>
                         </div>
-                        <div class="ms-3">
-                          <h5><%= cart_item.product.name%></h5>
-                          <p class="small mb-0"><%= cart_item.product.color%></p>
+                        <div class="d-flex flex-row align-items-center">
+                          <div style="width: 50px;">
+                            <h5 class="fw-normal mb-0"><%=cart_item.quantity%></h5>
+                          </div>
+                          <div style="width: 80px;">
+                            <h5 class="mb-0">$<%= cart_item.product.price%></h5>
+                          </div>
+                          <%= form_with url: cart_item_path(cart_item), method: :put do |form| %>
+                            <%= form.label :quantity_cart_item %>
+                            <%= form.text_field :quantity_cart_item %>
+                            <%= form.submit "Update quantity" %>
+                          <% end %>
+                          <%= button_to "Delete", cart_item, method: :delete %>
                         </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0"><%=cart_item.quantity%></h5>
-                        </div>
-                        <div style="width: 80px;">
-                          <h5 class="mb-0">$<%= cart_item.product.price%></h5>
-                        </div>
-                        <%# <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a> %>
-                        <%= link_to "Update quantity", edit_cart_item_path(cart_item) %>
-                        <%= button_to "Delete", cart_item, method: :delete %>
                       </div>
                     </div>
                   </div>
-                </div>
-
-            <%end%>
+                <%end%>
 
               </div>
               <div class="col-lg-5">

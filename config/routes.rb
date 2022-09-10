@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   #product
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
 
+  #cart_item
+
 
   resources :shops
   resources :products

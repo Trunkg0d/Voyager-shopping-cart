@@ -43,19 +43,11 @@ class CartItemsController < ApplicationController
     old_quantity = @cart_item.quantity
     total = @cart_item.cart_session.sum_money
 
-    respond_to do |format|
-      if @cart_item.update(cart_item_params)
-        format.html { redirect_to cart_item_url(@cart_item), notice: "Cart item was successfully updated." }
-        format.json { render :show, status: :ok, location: @cart_item }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cart_item.errors, status: :unprocessable_entity }
-      end
-    end
-
+    @cart_item.update_attribute(:quantity, params[:quantity_cart_item])
     total -= old_quantity*@cart_item.product.price
     total += @cart_item.product.price * @cart_item.quantity
     @cart_item.cart_session.update_attribute(:sum_money, total)
+    redirect_to cart_session_path(current_cart_session)
   end
 
   # DELETE /cart_items/1 or /cart_items/1.json
