@@ -44,6 +44,7 @@
                           <h5 class="mb-0">$<%= cart_item.product.price%></h5>
                         </div>
                         <%# <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a> %>
+                        <%= link_to "Update quantity", edit_cart_item_path(cart_item) %>
                         <%= button_to "Delete", cart_item, method: :delete %>
                       </div>
                     </div>

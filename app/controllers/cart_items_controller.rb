@@ -40,6 +40,9 @@ class CartItemsController < ApplicationController
 
   # PATCH/PUT /cart_items/1 or /cart_items/1.json
   def update
+    old_quantity = @cart_item.quantity
+    total = @cart_item.cart_session.sum_money
+
     respond_to do |format|
       if @cart_item.update(cart_item_params)
         format.html { redirect_to cart_item_url(@cart_item), notice: "Cart item was successfully updated." }
@@ -49,6 +52,10 @@ class CartItemsController < ApplicationController
         format.json { render json: @cart_item.errors, status: :unprocessable_entity }
       end
     end
+
+    total -= old_quantity*@cart_item.product.price
+    total += @cart_item.product.price * @cart_item.quantity
+    @cart_item.cart_session.update_attribute(:sum_money, total)
   end
 
   # DELETE /cart_items/1 or /cart_items/1.json
