@@ -37,21 +37,21 @@
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center">
-                          <div style="width: 80px;">
+                          <div style="width: 100px">
                             <h5 class="mb-0">$<%= cart_item.product.price%></h5>
                           </div>
 
                           <div>
                             <%= form_with url: cart_item_path(cart_item), method: :put do |form| %>
-                              <%= form.label :quantity_cart_item, "Quantity" %>
-                              <%= form.number_field :quantity_cart_item, placeholder: "#{cart_item.quantity}" %>
-                              <%= form.submit "edit" %>
+                              <%= form.number_field :quantity_cart_item, placeholder: "Quantity: #{cart_item.quantity}", class: 'quantity_cart_item' %>
+                              <%= form.submit "edit", class:"btn btn-outline-dark mt-auto " %>
                             <% end %>
                           </div>
 
                           <div>
-                            <%= button_to "Delete", cart_item, method: :delete %>
+                            <%= button_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, cart_item, method: :delete, class:"btn btn-outline-dark mt-auto"%>
                           </div>
+
                         </div>
                       </div>
                     </div>

@@ -8,13 +8,17 @@ class ProductsController < ApplicationController
         @product = Product.find_by(id: params[:id])
     end
 
+    def new
+    	@product = Product.new 
+  	end
+
     def create
         @product = current_shop.products.build(product_params)
         if @product.save
             flash[:success] = "Product created!"
             redirect_to shop_path(current_shop.id)
         else
-            render 'static_pages/home'
+            render 'new'
         end
     end
 

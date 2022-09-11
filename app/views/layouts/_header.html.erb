@@ -39,7 +39,7 @@
                 <ul class="dropdown-menu", data-turbolinks="false">
                   <%if (create_shop?)%>
                     <%=link_to "Shop Profile", shop_path(current_shop.id), class: "dropdown-item"%>
-                    <%=link_to "Add Product", shop_add_product_path, class: "dropdown-item"%>
+                    <%=link_to "Add Product", new_product_path, class: "dropdown-item"%>
                   <%else%>
                     <%=link_to "Shop Sign up", shop_signup_path, class:"dropdown-item" %>
                   <%end%>
