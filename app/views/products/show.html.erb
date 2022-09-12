@@ -14,19 +14,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner images-slider">
-              <% if @product.images.count > 1 %>
+          <% if @product.images.count > 1 %>
                 <% @product.images.each do |image| %>
-                  <div class="carousel-item active">
-                    <%= image_tag image.thumb.url, class: "d-block w-450 h-300"%>
+                  <div class="mt-2">
+                    <%= image_tag image.thumb.url, class: "img-fluid", style: "width: 300px; height: 200px"%>
                   </div>
                 <% end %>
               <% else %>
                 <%= image_tag @product.images[0].thumb.url, class: "img-fluid"%>
-              <% end %>
-            </div>
-          </div>
+          <% end %>
         </div>
         <div class="col-md-6">
           <h2 class="text-black"><%= @product.name %></h2>
