@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :price
       t.integer :quantity_remain
       t.text :description
-      t.string :image
+      t.string :images
       t.timestamps
     end
     add_index :products, [:shop_id, :created_at]

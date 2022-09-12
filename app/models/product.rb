@@ -3,10 +3,12 @@ class Product < ApplicationRecord
     has_many :product_categories
     has_many :categories, through: :product_categories
     default_scope -> {order(created_at: :desc)}
-    mount_uploader :image, ImageUploader
+    mount_uploaders :images, ImageUploader
+    serialize :images
+
     validates :name, presence: true
     validates :size, presence: true
     validates :color, presence: true
     validates :quantity_remain, presence: true
-    validates :image, presence: true
+    validates :images, presence: true
 end

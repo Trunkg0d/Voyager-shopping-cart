@@ -74,7 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_133136) do
     t.integer "price"
     t.integer "quantity_remain"
     t.text "description"
-    t.string "image"
+    t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id", "created_at"], name: "index_products_on_shop_id_and_created_at"
