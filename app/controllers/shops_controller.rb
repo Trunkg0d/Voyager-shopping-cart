@@ -25,9 +25,17 @@ class ShopsController < ApplicationController
     end
 
     def edit
+        @shop = Shop.find(params[:id]) 
     end
 
     def update
+        @shop = Shop.find(params[:id])
+        if @shop.update(shop_params)
+            flash[:success] = "Updated your Shop"
+            redirect_to @shop
+        else
+            render "edit"
+        end
     end
 
     def destroy
