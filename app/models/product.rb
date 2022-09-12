@@ -9,5 +9,4 @@ class Product < ApplicationRecord
     validates :color, presence: true
     validates :quantity_remain, presence: true
     validates :image, presence: true
-
 end
