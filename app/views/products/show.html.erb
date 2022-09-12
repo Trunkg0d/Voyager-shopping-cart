@@ -14,7 +14,12 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <%= image_tag @product.image.thumb.url, class: "img-fluid"%>
+          <%#= image_tag @product.images[0].thumb.url, class: "img-fluid"%>
+          <% if !@product.images[0].nil? %>
+            <% @product.images.each do |image| %>
+              <%= image_tag image.thumb.url, class: "img-fluid"%>
+            <% end %>
+          <% end %>
         </div>
         <div class="col-md-6">
           <h2 class="text-black"><%= @product.name %></h2>

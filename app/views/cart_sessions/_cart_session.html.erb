@@ -29,7 +29,7 @@
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                           <div>
-                            <%= image_tag cart_item.product.image.thumb.url, :style => "border: 1px solid gray; width: 65px" if cart_item.product.image? %>
+                            <%= image_tag cart_item.product.images[0].thumb.url, :style => "border: 1px solid gray; width: 65px" if !cart_item.product.images[0].nil? %>
                           </div>
                           <div class="ms-3">
                             <h5>
