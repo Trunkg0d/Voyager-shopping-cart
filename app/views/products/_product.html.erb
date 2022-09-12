@@ -8,6 +8,8 @@
             <div class="text-center">
                 <!-- Product name-->
                 <h5 class="fw-bolder"><%= product.name %></h5>
+                <!-- Product Link to Shop-->
+                <h6 class="fw-bolder"><%= link_to "#{product.shop.name}", shop_path(product.shop) %></h6>
                 <!-- Product reviews-->
                 <div class="d-flex justify-content-center small text-warning mb-2">
                     <div class="description bi-star-fill"><%= product.description %></div>
