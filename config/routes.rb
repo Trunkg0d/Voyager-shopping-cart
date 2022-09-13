@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create' 
   delete '/logout', to: 'sessions#destroy'
-  resources :users
-
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  
   #shop
   get '/shop_signup', to: 'shops#new'
   get '/shop_add_product', to: 'shops#add_product'
@@ -30,4 +34,5 @@ Rails.application.routes.draw do
   resources :cart_items
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :relationships, only: [:create, :destroy]
 end
