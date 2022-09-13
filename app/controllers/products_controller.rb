@@ -37,6 +37,11 @@ class ProductsController < ApplicationController
     end
 
     def destroy
+        @product = Product.find(params[:id])
+        quantity = @product.cart_item.quantity
+        price = @product.cart_item.product.price
+        total = @product.cart_item.cart_session.sum_money - price * quantity
+        @product.cart_item.cart_session.update_attribute(:sum_money, total)
         Product.find_by(id: params[:id], shop: current_shop).destroy
         flash[:success] = "Product deleted"
         redirect_to shop_path(current_shop)
