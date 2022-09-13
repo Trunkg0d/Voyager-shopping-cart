@@ -4,7 +4,6 @@ class CreateOrderItems < ActiveRecord::Migration[7.0]
       t.references :order
       t.references :product
       t.integer :quantity
-      t.integer :price
       t.timestamps
     end
   end

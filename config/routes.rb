@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
   #cart_item
 
+  #order
+  post '/cart_sessions/:id/order', to: 'cart_sessions#checkout', as: "order"
+
 
   resources :shops
   resources :products
