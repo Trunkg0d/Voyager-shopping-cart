@@ -61,6 +61,9 @@ class ProductsController < ApplicationController
         total += @cart_item.product.price * @cart_item.quantity
         @cart_item.cart_session.update_attribute(:sum_money, total)
 
+        quantity = @cart_item.product.quantity_remain
+        @cart_item.product.update_attribute(:quantity_remain, quantity - @cart_item.quantity)
+
         if @cart_item.save
           flash[:success] = "Add product successfully"
         else
