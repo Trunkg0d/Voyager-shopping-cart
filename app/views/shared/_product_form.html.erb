@@ -13,15 +13,15 @@
                   <%= render 'shared/error_messages', object: f.object %>
 
                   <div class="mb-3 ms-5">
-                    <% if @product.image?%>
-                      <%= image_tag @product.image.thumb.url %>
+                    <% if !@product.images[0].nil?%>
+                      <%= image_tag @product.images[0].thumb.url %>
                     <%else%>
                       <%= image_tag "product.png", height:100, width:100%>
                     <%end%>
 
                     <span class="image">
-                      <%= f.label :image, "Add Product Image", class: "btn btn-outline-dark mt-auto", onclick:"document.getElementById('product_image_button').click()" %>
-                      <%= f.file_field :image, id:"product_image_button" %>
+                      <%= f.label :images, "Add Product Image", class: "btn btn-outline-dark mt-auto", onclick:"document.getElementById('product_image_button').click()" %>
+                      <%= f.file_field :images, id:"product_image_button", multiple: true %>
                     </span>
                   </div>
                   
