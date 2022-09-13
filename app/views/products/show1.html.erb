@@ -1,0 +1,64 @@
+<div class="site-wrap">
+  <div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-0">
+          <%= link_to "Back to Shop", products_path%>
+          <span class="mx-2 mb-0">/</span> 
+          <strong class="text-black"><%= @product.name %></strong>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <% if @product.images.count > 1 %>
+                <% @product.images.each do |image| %>
+                  <div class="mt-2">
+                    <%= image_tag image.thumb.url, class: "img-fluid", style: "width: 300px; height: 200px"%>
+                  </div>
+                <% end %>
+              <% else %>
+                <%= image_tag @product.images[0].thumb.url, class: "img-fluid"%>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <h2 class="text-black"><%= @product.name %></h2>
+          <p><%= @product.description %></p>
+          <h5 class="text-black h4">Shop: <%= link_to "#{@product.shop.name}", shop_path(@product.shop) %></h5>
+          <p><strong class="text-black h4">Color: </strong><%= @product.color %></p>
+          <p><strong class="text-black h4">Size: </strong><%= @product.size %></p>
+          <p><strong class="text-black h4">Price: </strong><%= @product.price %> $</p>
+          <p>
+            <strong class="text-black h4">
+              Categories: 
+            </strong>
+            <% @product.categories.each do |cate| %>
+                <p class="btn btn-secondary btn-sm"><%= cate.name %></p>
+            <% end %>
+          </p>
+          <%= form_with url: add_product_path do |form| %>
+              <%= form.label :quantity %>
+              <%= form.text_field :quantity %>
+              <%= form.submit "Add Product" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <%= render "layouts/footer" %>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/main.js"></script>
