@@ -63,6 +63,10 @@ class CartSessionsController < ApplicationController
       @cart_session.cart_items.each do |cart_item|
         OrderItem.create(order_item_attrs(@order, cart_item))
       end
+      @cart_session.cart_items.each do |cart_item|
+        quantity = cart_item.product.quantity_remain
+        cart_item.product.update_attribute(:quantity_remain, quantity - cart_item.quantity)
+      end
       @cart_session.destroy
       flash[:success] = "Order was successfully"
       redirect_to root_path

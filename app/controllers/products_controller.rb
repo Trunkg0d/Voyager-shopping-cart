@@ -38,10 +38,12 @@ class ProductsController < ApplicationController
 
     def destroy
         @product = Product.find(params[:id])
-        quantity = @product.cart_item.quantity
-        price = @product.cart_item.product.price
-        total = @product.cart_item.cart_session.sum_money - price * quantity
-        @product.cart_item.cart_session.update_attribute(:sum_money, total)
+        if !@product.cart_item.nil?
+            quantity = @product.cart_item.quantity
+            price = @product.cart_item.product.price
+            total = @product.cart_item.cart_session.sum_money - price * quantity
+            @product.cart_item.cart_session.update_attribute(:sum_money, total)
+        end
         Product.find_by(id: params[:id], shop: current_shop).destroy
         flash[:success] = "Product deleted"
         redirect_to shop_path(current_shop)
@@ -60,9 +62,6 @@ class ProductsController < ApplicationController
         total = @cart_item.cart_session.sum_money
         total += @cart_item.product.price * @cart_item.quantity
         @cart_item.cart_session.update_attribute(:sum_money, total)
-
-        quantity = @cart_item.product.quantity_remain
-        @cart_item.product.update_attribute(:quantity_remain, quantity - @cart_item.quantity)
 
         if @cart_item.save
           flash[:success] = "Add product successfully"
