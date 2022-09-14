@@ -1,0 +1,14 @@
+<% if current_user.feed.size != 0 %>
+    <div class="row justify-content-center product-fav-shop">
+                <div class="col-md-7 site-section-heading text-center pt-4">
+                    <h2>Favourite Shop</h2>
+                </div>
+    </div>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <%= render 'shared/feed' %>
+           </div>
+        </div>
+    </section>
+<% end %>

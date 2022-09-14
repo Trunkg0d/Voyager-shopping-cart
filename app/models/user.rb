@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    include SessionsHelper
+
     attr_accessor :remember_token, :activation_token, :reset_token
     before_create :create_activation_digest
     before_save { self.email = email.downcase }
@@ -99,6 +101,11 @@ class User < ApplicationRecord
     # Returns true if the current user is following the other user.
     def following?(other_user)
         following.include?(other_user)
+    end
+
+    def feed
+        shop_ids = "select id from Shops where user_id in (select followed_id from Relationships where follower_id = #{id})"
+        Product.where("shop_id IN (#{shop_ids})").limit(8)
     end
 
     private

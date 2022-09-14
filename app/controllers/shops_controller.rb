@@ -20,6 +20,7 @@ class ShopsController < ApplicationController
             flash[:success] = "Welcome to your Shop"
             redirect_to @shop
         else
+            @feed_items = current_user.feed.paginate(page: params[:page])
             render 'new'
         end
     end

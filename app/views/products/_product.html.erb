@@ -26,12 +26,6 @@
             </div>
         </div>
 
-        <%# <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-        </div> %>
-
-        <%# Prevent edit and delete in show all products view %>
-
         <% if !current_shop.nil? %>
             <% if request.path == shop_path(current_shop.id) %>
                 <% if product.shop == current_shop %>
