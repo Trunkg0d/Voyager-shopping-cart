@@ -1,0 +1,13 @@
+<% @shop.user ||= current_user %>
+<div class="stats"> <a href="#"> 
+    <strong id="following" class="stat">
+        <%= @shop.user.following.count %>
+    </strong>
+    following
+        </a> <a href="#"> 
+    <strong id="followers" class="stat">
+        <%= @shop.user.followers.count %>
+    </strong>
+    followers
+    </a>
+</div>

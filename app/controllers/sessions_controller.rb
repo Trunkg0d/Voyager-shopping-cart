@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :log_still_log, only: [:create, :new]
   def new
   end
 
@@ -24,5 +25,12 @@ class SessionsController < ApplicationController
   def destroy
     log_out if logged_in?
     redirect_to root_url
+  end
+
+  def log_still_log
+    if logged_in?
+      flash[:success] = "Already logged in"
+      redirect_to root_url
+    end
   end
 end

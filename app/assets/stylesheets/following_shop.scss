@@ -1,0 +1,26 @@
+.stats {
+    overflow: auto;
+    margin-top: 0;
+    padding: 0; a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid gray;
+    color: white; 
+    text-align: center;
+    &:first-child {
+        padding-left: 45%;
+        border: 0; }
+        &:hover {
+        text-decoration: none;
+        color: wheat; 
+    } 
+}
+    strong {
+        display: block; 
+    } 
+}
+
+.follow-button{
+    margin-top: 10px;
+    text-align: center;
+}

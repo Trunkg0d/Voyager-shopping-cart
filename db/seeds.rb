@@ -21,7 +21,7 @@ User.create!(name: "Example User",
     activated_at: Time.zone.now)
 end
 
-users = User.order(:created_at).take(26)
+users = User.order(:created_at).take(15)
 users.each{
     |user|
     description = "Nike, Inc. is an American multinational corporation that is engaged in the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment, accessories, and services"
@@ -51,3 +51,11 @@ cates = ["Lifestyle", "Jordan", "Running", "Basketball", "Football", "Training &
 cates.each do |cate|
     Category.create!(name: cate)
 end
+
+# Create following relationships.
+users = User.all
+user = users.first
+following = users[2..10]
+followers = users[3..15]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
