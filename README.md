@@ -49,6 +49,6 @@ Things you may want to cover:
 - Add to cart
 - Update date cart
 // Finish order:
-    // store order to database
+    - store order to database
     // send email to shop, customer
 // List orders history of customer
