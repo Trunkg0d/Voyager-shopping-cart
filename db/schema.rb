@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_13_095543) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_16_030948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,11 +65,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_095543) do
     t.index ["product_id"], name: "index_product_categories_on_product_id"
   end
 
+  create_table "product_sizes", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "size_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_sizes_on_product_id"
+    t.index ["size_id"], name: "index_product_sizes_on_size_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "shop_id"
     t.string "name"
     t.string "color"
-    t.string "size"
     t.integer "price"
     t.integer "quantity_remain"
     t.text "description"
@@ -98,6 +106,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_095543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shops_on_user_id"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
