@@ -62,14 +62,6 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-solid fa-box-open fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                        <%= f.label :quantity_remain %>
-                        <%= f.number_field :quantity_remain, class: 'form-control' %>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                         <%= f.label :description, "Description" %>
@@ -87,12 +79,22 @@
                   </div>
 
                   
+
+                  <% if request.path != new_product_path %>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                          <div class="text-center">
+                              <%= link_to "Edit Quantity", edit_quantity_path, class:"btn btn-outline-dark mt-auto" %>
+                          </div>
+                    </div>
+                  <% end %>
+
+                  
                   
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <%= f.submit yield(:product_btn), class: "btn btn-outline-dark mt-auto" %>
                   </div>
                 <% end %>
-            </div>
+              </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
                 <img style="margin-left: 80px" src="https://media.baamboozle.com/uploads/images/210353/1611590474_164387"

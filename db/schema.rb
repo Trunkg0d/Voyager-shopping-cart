@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_054419) do
   create_table "product_sizes", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "size_id"
+    t.integer "quantity", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_sizes_on_product_id"

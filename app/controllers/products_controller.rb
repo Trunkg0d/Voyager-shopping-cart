@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
 
     def show
         @product = Product.find_by(id: params[:id])
+        total = 0
+        @product.product_sizes.each do |product_size|
+          total += product_size.quantity
+        end
+        @product.update_attribute(:quantity_remain, total)
     end
 
     def new
@@ -78,6 +83,27 @@ class ProductsController < ApplicationController
             @cart_session.user_id = session[:user_id]
             @cart_session.save
         end
+    end
+
+    def editQuantity
+        @product = Product.find(params[:id])    
+    end
+  
+    def updateQuantity
+        @product = Product.find_by(id: params[:id], shop: current_shop)
+        quantities = params[:product_size][:quantity]
+  
+        for i in 0...@product.product_sizes.length
+          @product.product_sizes[i].update_attribute(:quantity, quantities[i])
+        end
+      
+        total = 0
+        @product.product_sizes.each do |product_size|
+          total += product_size.quantity
+        end
+        @product.update_attribute(:quantity_remain, total)
+      
+        redirect_to @product
     end
 
     private
