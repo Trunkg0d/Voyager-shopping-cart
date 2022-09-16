@@ -39,7 +39,11 @@
               </p>
               <div class="product_meta">
                 <span class="tagged_as"><strong>Shop: <%= link_to "#{@product.shop.name}", shop_path(@product.shop) %></strong></span>
-                <span class="tagged_as"><strong>Color: </strong><%= @product.color %></span>
+                <span class="posted_in"> <strong>Color:</strong> 
+                    <% @product.colors.each do |color| %>
+                        <a rel="tag" href="#"><%= color.name %></a>
+                    <% end %>
+                </span>
                 <span class="posted_in"> <strong>Size:</strong> 
                     <% @product.sizes.each do |size| %>
                         <a rel="tag" href="#"><%= size.name %></a>

@@ -46,8 +46,10 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-solid fa-palette fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <%= f.label :color %>
-                        <%= f.text_field :color, class: 'form-control' %>
+                        <%= f.label "Color:" %><br />
+                        <%= f.collection_check_boxes :color_ids, Color.all, :id, :name do |b| %>
+                          <% b.label(class: "checkbox-inline input_checkbox") {b.check_box(class: "checkbox") + b.text } %>
+                        <% end %>
                     </div>
                   </div>
 
