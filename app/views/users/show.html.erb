@@ -1,4 +1,14 @@
 <% provide(:title, @user.name) %>
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <%= link_to "Home", root_path%>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Your Profile</li>
+        </ol>
+    </nav>        
+</div>
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
     <div class="card p-4"> 
         <div class=" image d-flex flex-column justify-content-center align-items-center"> 

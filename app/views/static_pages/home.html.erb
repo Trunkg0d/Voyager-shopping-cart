@@ -1,4 +1,5 @@
 <%provide(:title,"Home")%>
+<%=render "layouts/header"%>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -24,6 +25,7 @@
 
 <%=render "layouts/shipping"%>
 <%=render "layouts/collection"%>
+<%=render "layouts/swiper_instagram"%>
 <% if logged_in? %>
   <%=render "layouts/product_shop"%>
 <% end %>
