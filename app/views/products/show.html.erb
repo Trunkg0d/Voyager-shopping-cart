@@ -65,6 +65,13 @@
               <div class="form-group">
                 <% if @product.quantity_remain != 0 %>
                     <%= form_with url: add_product_path do |form| %>
+                        <div class="item__button">
+                            <div class="input-group">
+                                <%= form.collection_radio_buttons :size_product, @product.sizes.all, :id, :name do |b| %>
+                                <% b.label(class: "item__size d-flex me-2") {b.label(class: "input-group-text input_group_text") {b.radio_button(class: "form-check-input mt-0", "aria-label" => "Checkbox for following text input" )} + b.label(class:"form-control form_control") {b.text}} %>
+                                <% end %>
+                            </div>
+                        </div>
                         <%= form.label :quantity, "Quantity" %>
                         <%= form.number_field :quantity %>
                         <%= form.submit "Add to cart", class:"btn btn-round btn-danger" %>

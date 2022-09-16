@@ -40,10 +40,14 @@ class CartItemsController < ApplicationController
 
   # PATCH/PUT /cart_items/1 or /cart_items/1.json
   def update
+    puts "Hi"
+    puts "cart_item.product.price: #{@cart_item.product.price}"
+    puts "cart_item.quantity: #{@cart_item.quantity}"
+    puts "Hi"
     old_quantity = @cart_item.quantity
     total = @cart_item.cart_session.sum_money
-
     @cart_item.update_attribute(:quantity, params[:quantity_cart_item])
+
     total -= old_quantity*@cart_item.product.price
     total += @cart_item.product.price * @cart_item.quantity
     @cart_item.cart_session.update_attribute(:sum_money, total)

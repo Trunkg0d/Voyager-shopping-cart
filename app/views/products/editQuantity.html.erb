@@ -1,0 +1,29 @@
+<div class="form-container">
+  <div class="form-inner">
+    <div class="form__title">
+      Edit Quantity
+    </div>
+
+    <%= form_for @product, url: edit_quantity_path do |form| %>
+      <div class="form__content">
+        <div class="row">
+          <% @product.product_sizes.each do |product_size| %>
+            <%= form.fields_for product_size do |f| %>
+              <div class="col-4">
+                <label class="form-label"> <%= product_size.size.name %> </label>
+                <%= f.number_field :quantity, class: "form-control", multiple: true, name: 'product_size[quantity][]' %>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="col-12 pt-3">
+            <%= form.submit "Submit" , class: "btn btn-primary max-width" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div>
+      <%= link_to "Back to products", products_path %>
+    </div>
+  </div>
+</div>
