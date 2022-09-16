@@ -52,6 +52,16 @@ cates.each do |cate|
     Category.create!(name: cate)
 end
 
+sizes = ["S", "X", "M", "L", 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
+sizes.each do |size|
+    Size.create!(name: size)
+end
+
+colors = ["Black", "Silver", "Gray", "White", "Maroon", "Red", "Purple", "Fuchsia", "Green",
+        "Lime", "Olive", "Yellow", "Navy", "Blue", "Teal", "Aqua"]
+colors.each do |color|
+    Color.create!(name: color)
+end
 # Create following relationships.
 users = User.all
 user = users.first

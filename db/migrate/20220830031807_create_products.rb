@@ -4,7 +4,6 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.references :shop
       t.string :name
       t.string :color
-      t.string :size
       t.integer :price
       t.integer :quantity_remain
       t.text :description

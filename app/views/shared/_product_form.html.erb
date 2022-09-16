@@ -1,4 +1,3 @@
-<%provide(:title,"Add product")%>
 <section class="vh-100 signup" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -13,7 +12,7 @@
                   <%= render 'shared/error_messages', object: f.object %>
 
                   <div class="mb-3 ms-5">
-                    <% if !@product.images[0].nil?%>
+                    <% if @product.images?%>
                       <%= image_tag @product.images[0].thumb.url %>
                     <%else%>
                       <%= image_tag "product.png", height:100, width:100%>
@@ -21,7 +20,7 @@
 
                     <span class="image">
                       <%= f.label :images, "Add Product Image", class: "btn btn-outline-dark mt-auto", onclick:"document.getElementById('product_image_button').click()" %>
-                      <%= f.file_field :images, id:"product_image_button", multiple: true %>
+                      <%= f.file_field :images, multiple: true, id:"product_image_button" %>
                     </span>
                   </div>
                   
@@ -45,16 +44,20 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-solid fa-palette fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <%= f.label :color %>
-                        <%= f.text_field :color, class: 'form-control' %>
+                        <%= f.label "Color:" %><br />
+                        <%= f.collection_check_boxes :color_ids, Color.all, :id, :name do |b| %>
+                          <% b.label(class: "checkbox-inline input_checkbox") {b.check_box(class: "checkbox") + b.text } %>
+                        <% end %>
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-solid fa-maximize fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <%= f.label :size %>
-                        <%= f.text_field :size, class: 'form-control' %>
+                        <%= f.label "Size:" %><br />
+                        <%= f.collection_check_boxes :size_ids, Size.all, :id, :name do |b| %>
+                          <% b.label(class: "checkbox-inline input_checkbox") {b.check_box(class: "checkbox") + b.text } %>
+                        <% end %>
                     </div>
                   </div>
 
