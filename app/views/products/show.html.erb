@@ -3,13 +3,17 @@
 <section class="panel">
     <div class="bg-white py-3">
         <div class="container">
-          <div class="row">
-            <div class="col-md-12 mb-0">
-              <%= link_to "Back to Shop", products_path%>
-              <span class="mx-2 mb-0">/</span> 
-              <strong class="text-black"><%= @product.name %></strong>
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <%= link_to "Back to Shop", products_path%>
+                    <span class="mx-2 mb-0">/</span> 
+                    <strong class="text-black"><%= @product.name %></strong>                    
+                    <% if !current_cart_session.nil? %>
+                        <span class="mx-2 mb-0">/</span> 
+                        <%= link_to "View your cart", cart_session_path(current_cart_session)%>
+                    <% end %>
+                </div>
             </div>
-          </div>
         </div>
     </div>  
       <div class="panel-body d-flex">
