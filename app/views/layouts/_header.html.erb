@@ -23,7 +23,7 @@
         <% end %>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Account
           </a>
           <%if logged_in?%>
@@ -33,7 +33,7 @@
               </ul>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Your Shop
                 </a>  
                 <ul class="dropdown-menu", data-turbolinks="false">
@@ -49,7 +49,7 @@
 
               <% if !current_cart_session.nil?%>
                 <li class="nav-item">
-                  <%=link_to "Cart", cart_session_path(current_cart_session), class:"nav-link active"%>
+                  <%=link_to "", cart_session_path(current_cart_session), class:"nav-link active fa-solid fa-cart-shopping mt-1"%>
                 </li>
               <% end %>
           <%else%>

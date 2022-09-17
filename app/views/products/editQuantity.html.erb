@@ -1,7 +1,18 @@
+<div class="bg-white py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <%= link_to "Back to Your Shop", shop_path(current_user.shop)%>
+                <span class="mx-2 mb-0">/</span> 
+                <strong class="text-black"><%= @product.name %></strong>
+            </div>
+        </div>
+    </div>
+</div>  
 <div class="form-container">
   <div class="form-inner">
     <div class="form__title">
-      Edit Quantity
+      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Edit Quantity</p>
     </div>
 
     <%= form_for @product, url: edit_quantity_path do |form| %>
@@ -9,8 +20,8 @@
         <div class="row">
           <% @product.product_sizes.each do |product_size| %>
             <%= form.fields_for product_size do |f| %>
-              <div class="col-4">
-                <label class="form-label"> <%= product_size.size.name %> </label>
+              <div class="col-3">
+                <label class="form-label"> <h5 class="font-weight-bold text"> Size: <%= product_size.size.name %></h5> </label>
                 <%= f.number_field :quantity, class: "form-control", multiple: true, name: 'product_size[quantity][]' %>
               </div>
             <% end %>
