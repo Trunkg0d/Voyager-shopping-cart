@@ -2,19 +2,24 @@
 
 nav{
     font-family: 'Cabin', sans-serif;
-    font-size:20px;
+    font-size: 23px;
     .logo{
         font-size: larger;
         margin-right: 10px;
         font-family: 'Lobster', cursive;
+        color: red;
     }
     .logo:hover{
-        color: red;
+        color: blue;
     }
     .nav{
         padding-top: 2px;
         padding-bottom: 2px;
     }
+}
+
+.nav-title:hover{
+    color:red
 }
 
 .shipping{
@@ -69,3 +74,22 @@ div.description {
 input.quantity_cart_item{
     width: 50%;
 }
+
+.carousel-item{
+    padding-left: 50px;
+    padding-right: 40px;
+}
+
+// Css for banner shop
+.shop-banner {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+.bottom-left {
+    position: absolute;
+    bottom: 10%;
+    left: 6%;
+  }
+
