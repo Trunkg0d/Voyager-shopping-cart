@@ -133,7 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_054419) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "avatar", default: "user.png"
+    t.string "avatar", default: "/assets/avatar/user.png"
     t.string "phone"
     t.string "address"
     t.integer "role", default: 1

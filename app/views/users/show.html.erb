@@ -1,11 +1,11 @@
 <% provide(:title, @user.name) %>
-<div>
+<div style="margin-left:20px">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <%= link_to "Home", root_path%>
+            <%= link_to "Home", root_path, style:"color:red"%>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Your Profile</li>
+          <li class="breadcrumb-item active text-black" aria-current="page">Your Profile</li>
         </ol>
     </nav>        
 </div>
@@ -17,7 +17,7 @@
                 <% if @user.avatar?%>
                     <%= image_tag @user.avatar.thumb.url %>
                 <%else%>
-                    <%= image_tag "user.png", height:100, width:100%>
+                    <%= image_tag "/assets/avatar/user.png", height:100, width:100%>
                 <%end%>
             </button> 
             <span class="name mt-3"><%= @user.name %></span> 

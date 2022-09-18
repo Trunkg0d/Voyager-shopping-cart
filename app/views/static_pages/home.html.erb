@@ -1,15 +1,16 @@
 <%provide(:title,"Home")%>
 <%=render "layouts/header"%>
+<div class="">
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%=image_tag "1.png", class:"d-block w-100"%>
+      <%=image_tag "bg1.jpg", class:"d-block w-100"%>
     </div>
     <div class="carousel-item">
-      <%=image_tag "2.png", class:"d-block w-100"%>
+      <%=image_tag "bg2.jpg", class:"d-block w-100"%>
     </div>
     <div class="carousel-item">
-      <%=image_tag "3.png", class:"d-block w-100"%>
+      <%=image_tag "bg3.jpg", class:"d-block w-100"%>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -32,3 +33,4 @@
 <%=render "layouts/featured_products"%>
 <%=render "layouts/sale"%>
 <%=render "layouts/footer"%>
+</div>

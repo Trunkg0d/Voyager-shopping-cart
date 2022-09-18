@@ -1,33 +1,34 @@
-<%= provide(:title, "Happy Shopping") %>
+<%= provide(:title, "Shop") %>
 <%=render "layouts/header"%>
 <body class="">
     <!-- Main Section-->
     <section class="mt-0 ">
-        <!-- Page Content Goes Here -->
-        
         <!-- Category Top Banner -->
-        <div class="text-center py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0">
-            <%= image_tag "banner-category-top.jpg", style: "width: 95%; height: 260px"%>
+        <div class="shop-banner">
+            <div class="text-center py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0 ">
+                <%= image_tag "banner-category-top.jpg", style: "width: 95%; height: 260px"%>
+            </div>
+            <div class="bottom-left fs-5 text-white w-50">
+                <h1>Latest Arrivals</h1>
+                <p style="color:white">
+                    When it's time to head out and get your Kicks on, have a
+                    look at our latest arrivals. Whether you're into Nike, 
+                    Adidas, Dunks or New Balance, we really have 
+                    something for everyone!
+            </div>
         </div>
         <!-- Category Top Banner -->
 
         <div class="container-fluid" data-aos="fade-in">
             <!-- Category Toolbar-->
-                <div class="d-flex justify-content-between items-center pt-3 flex-column flex-lg-row">
-                    <div>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                              <li class="breadcrumb-item">
-                                <%= link_to "Home", root_path%>
-                              </li>
-                              <li class="breadcrumb-item active" aria-current="page">New Releases</li>
-                            </ol>
-                        </nav>        <h1 class="fw-bold fs-3 mb-2">New Releases (<%= @products.all.count %>)</h1>
+                <div class="d-flex justify-content-between items-center pt-5 flex-column flex-lg-row" style="padding-left:1.5%">
+                    <div>    
+                        <h1 class="fw-bold fs-3 mb-5">New Releases (<%= @products.all.count %>)</h1>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mt-4 mt-lg-0 flex-column flex-md-row">
                 
                         <!-- Filter Trigger-->
-                        <button class="btn bg-light p-3 me-md-3 d-flex align-items-center fs-7 lh-1 w-100 mb-2 mb-md-0 w-md-auto " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
+                        <button class="btn btn-outline-dark p-3 me-md-3 d-flex align-items-center fs-7 lh-1 w-100 mb-2 mb-md-0 w-md-auto " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
                             <i class="ri-equalizer-line me-2"></i> Filters
                         </button>
                         <!-- / Filter Trigger-->

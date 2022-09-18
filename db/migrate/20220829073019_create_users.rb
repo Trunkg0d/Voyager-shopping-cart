@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :avatar, default: "user.png"
+      t.string :avatar, default: "/assets/avatar/"
       t.string :phone
       t.string :address
       t.integer :role, default: 1
