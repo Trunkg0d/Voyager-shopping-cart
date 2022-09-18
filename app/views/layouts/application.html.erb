@@ -2,6 +2,10 @@
 <html>
   <head>
     <title><%=yield(:title)%> | Happy Shopping</title>
+    <!-- add icon link -->
+    <link rel = "icon" 
+    href = "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBL1N0SWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--74ff0ce86bb335e328b7b0e7f06c89e49f87ca25/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--091b576187e678c126e08874e5757891d97541a7/Logo%20vuong.jpg" type = "image/x-icon">
+    
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -40,21 +44,6 @@
             maximumSelectionLength: 10,
             tokenSeparators: [',', ' '],
             placeholder: "Select or type keywords",
-            //minimumInputLength: 1,
-            //ajax: {
-           //   url: "you url to data",
-           //   dataType: 'json',
-            //  quietMillis: 250,
-            //  data: function (term, page) {
-            //     return {
-            //         q: term, // search term
-            //    };
-           //  },
-           //  results: function (data, page) { 
-           //  return { results: data.items };
-          //   },
-          //   cache: true
-           // }
         });
     </script>
   </body>

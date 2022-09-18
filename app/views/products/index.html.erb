@@ -1,13 +1,9 @@
-<%= provide(:title, "Happy Shopping") %>
+<%= provide(:title, "Shop") %>
 <%=render "layouts/header"%>
 <body class="">
     <!-- Main Section-->
     <section class="mt-0 ">
-        <!-- Page Content Goes Here -->
-        
         <!-- Category Top Banner -->
-
-
         <div class="shop-banner">
             <div class="text-center py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0 ">
                 <%= image_tag "banner-category-top.jpg", style: "width: 95%; height: 260px"%>
@@ -26,15 +22,7 @@
         <div class="container-fluid" data-aos="fade-in">
             <!-- Category Toolbar-->
                 <div class="d-flex justify-content-between items-center pt-5 flex-column flex-lg-row" style="padding-left:1.5%">
-                    <div>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                              <li class="breadcrumb-item">
-                                <%= link_to "Home", root_path%>
-                              </li>
-                              <li class="breadcrumb-item active" aria-current="page">New Releases</li>
-                            </ol>
-                        </nav>        
+                    <div>    
                         <h1 class="fw-bold fs-3 mb-5">New Releases (<%= @products.all.count %>)</h1>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mt-4 mt-lg-0 flex-column flex-md-row">
