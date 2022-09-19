@@ -98,6 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_054419) do
     t.integer "quantity_remain"
     t.text "description"
     t.string "images"
+    t.integer "public", default: 0
+    t.integer "sale", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id", "created_at"], name: "index_products_on_shop_id_and_created_at"
@@ -133,7 +135,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_054419) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "avatar", default: "/assets/avatar/user.png"
+    t.string "avatar", default: "/assets/avatar/"
     t.string "phone"
     t.string "address"
     t.integer "role", default: 1
