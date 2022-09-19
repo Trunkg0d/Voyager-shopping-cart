@@ -78,9 +78,8 @@
                               <%= link_to "Edit Quantity", edit_quantity_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
                           </div>
                     </div>
-                  <% end %>
-
-                  <% if isPublic?(@product) %>
+                    
+                    <% if isPublic?(@product) %>
                       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
                                 <%= link_to "Private", privateProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
@@ -93,8 +92,7 @@
                             </div>
                       </div>
                   <% end %>
-
-                  
+                  <% end %>
                   
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <%= f.submit yield(:product_btn), class: "btn btn-outline-dark mt-auto" %>
