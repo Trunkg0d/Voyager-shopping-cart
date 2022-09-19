@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
   get '/products/:id/editQuantity', to: 'products#editQuantity', as: 'edit_quantity'
   patch '/products/:id/editQuantity', to: 'products#updateQuantity'
+  get '/products/:id/publicProduct', to: 'products#publicProduct', as: 'publicProduct'
+  patch '/products/:id/publicProduct', to: 'products#publicProduct'
+  get '/products/:id/privateProduct', to: 'products#privateProduct', as: 'privateProduct'
+  patch '/products/:id/privateProduct', to: 'products#privateProduct'
 
   #cart_item
 

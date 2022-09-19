@@ -75,9 +75,23 @@
                   <% if request.path != new_product_path %>
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                           <div class="text-center">
-                              <%= link_to "Edit Quantity", edit_quantity_path, class:"btn btn-outline-dark mt-auto" %>
+                              <%= link_to "Edit Quantity", edit_quantity_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
                           </div>
                     </div>
+                  <% end %>
+
+                  <% if isPublic?(@product) %>
+                      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <%= link_to "Private", privateProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                            </div>
+                      </div>
+                  <% else %>
+                      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <%= link_to "Public", publicProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                            </div>
+                      </div>
                   <% end %>
 
                   

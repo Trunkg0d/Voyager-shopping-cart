@@ -8,6 +8,8 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :quantity_remain
       t.text :description
       t.string :images
+      t.integer :public, default: 0
+      t.integer :sale, default: 0
       t.timestamps
     end
     add_index :products, [:shop_id, :created_at]

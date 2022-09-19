@@ -106,6 +106,18 @@ class ProductsController < ApplicationController
         redirect_to @product
     end
 
+    def publicProduct
+        @product = Product.find_by(id: params[:id], shop: current_shop)
+        @product.update_attribute(:public, 1)
+        redirect_to shop_path(@product.shop)
+    end
+
+    def privateProduct
+        @product = Product.find_by(id: params[:id], shop: current_shop)
+        @product.update_attribute(:public, 0)
+        redirect_to shop_path(@product.shop)
+    end
+
     private
         def product_params
             params.require(:product).permit(:name, :price, :quantity_remain, :description, images: [], category_ids:[], size_ids: [], color_ids: [])
