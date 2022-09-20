@@ -90,7 +90,8 @@ class CartSessionsController < ApplicationController
       {
         order_id: order.id,
         product_id: cart_item.product_id,
-        quantity: cart_item.quantity
+        quantity: cart_item.quantity,
+        size: cart_item.size
       }
     end
 end

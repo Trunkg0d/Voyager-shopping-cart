@@ -59,7 +59,7 @@
                     <% end %>
                 </span>
                 <span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#">mens</a>, <a rel="tag" href="#">womens</a>.</span>
-                <span class="tagged_as"><strong>Size: </strong><%= @product.price %></span>
+                <span class="tagged_as"><strong>Price: </strong><%= @product.price %> $</span>
                 <% if @product.quantity_remain == 0 %>
                     <span class="tagged_as"><strong class="text-danger" style="font-size:25px">Out of stock</strong></span>  
                 <% else %>

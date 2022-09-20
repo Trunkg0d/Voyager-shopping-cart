@@ -59,6 +59,7 @@ class ProductsController < ApplicationController
         getId(@product)
         @cart_item = CartItem.new
         @cart_item.quantity = params[:quantity]
+        @cart_item.size = Size.find(params[:size_product]).name
         @cart_item.cart_session_id = current_cart_session.id
         @cart_item.product_id = current_product.id
         if (count_cart_sessions == 2)

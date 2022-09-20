@@ -30,7 +30,6 @@ class CartItemsController < ApplicationController
     total = @cart_item.cart_session.sum_money
     total += @cart_item.product.price * @cart_item.quantity
     @cart_item.cart_session.update_attribute(:sum_money, total)
-
     if @cart_item.save
       flash[:success] = "Cart item was successfully created"
     else
@@ -72,6 +71,6 @@ class CartItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_item_params
-      params.require(:cart_item).permit(:quantity, :product_id, :cart_session_id)
+      params.require(:cart_item).permit(:quantity, :size, :product_id, :cart_session_id)
     end
 end

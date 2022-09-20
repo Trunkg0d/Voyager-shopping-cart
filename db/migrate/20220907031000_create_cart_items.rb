@@ -4,6 +4,7 @@ class CreateCartItems < ActiveRecord::Migration[7.0]
       t.references :cart_session
       t.references :product
       t.integer :quantity
+      t.string :size
       t.timestamps
     end
   end
