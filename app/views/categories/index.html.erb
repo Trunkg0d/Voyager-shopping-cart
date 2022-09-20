@@ -1,0 +1,19 @@
+<%= render "layouts/header" %>
+<div class="shop-banner">
+    <div class="text-center py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0 mb-5">
+        <%= image_tag "banner_adidas.jpg", style: "width: 95%; height: 400px"%>
+    </div>
+</div>
+<% @categories.each do |category| %>
+    <% if category.products.any? %>
+        <h3 style="text-align: center"><%= category.name %></h3>
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 ">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <%= render category.products %>
+               </div>
+            </div>
+        </section>
+    <% end %>
+<% end %>
+

@@ -12,13 +12,17 @@
         <li class="nav-item">
           <%=link_to "Catalogue", catalogue_path, class:"nav-link active"%>
         </li>
-        <li class="nav-item">
-          <%=link_to "Contact", contact_path, class:"nav-link active"%>
-        </li>
-
+        
         <% if logged_in? %>
-          <li class="nav-item">
-            <%=link_to "Shop", products_path , class:"nav-link active"%>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Shopping
+            </a>  
+            <ul class="dropdown-menu", data-turbolinks="false">
+                <%=link_to "Products", products_path , class:"dropdown-item"%>
+                <%=link_to "Categories", categories_path, class:"dropdown-item"%>
+            </ul>
           </li>
         <% end %>
 
@@ -29,6 +33,7 @@
           <%if logged_in?%>
               <ul class="dropdown-menu", data-turbolinks="false">
                 <%=link_to "Profile",current_user, class:"dropdown-item"%>
+                <%=link_to "Contact", contact_path, class:"dropdown-item"%>
                 <%=button_to "Log Out",logout_path, method: :delete,class:"dropdown-item" %>
               </ul>
 

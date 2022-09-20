@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   #order
   post '/cart_sessions/:id/order', to: 'cart_sessions#checkout', as: "order"
 
+  #category
+  
+
 
   resources :shops
   resources :products
@@ -41,4 +44,5 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
+  resources :categories
 end
