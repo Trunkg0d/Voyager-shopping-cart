@@ -10,9 +10,19 @@ module ProductsHelper
     end
 
     def isPublic?(product)
-        if product.public == 1 && product.shop.user == current_user
+        if product.public == 1
             return true
         end
         return false
+    end
+
+    def sumPublic(products)
+        sum = 0
+        products.each do |product|
+            if isPublic?(product) == true
+                sum+=1
+            end
+        end
+        sum
     end
 end
