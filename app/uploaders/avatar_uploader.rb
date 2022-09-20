@@ -6,9 +6,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [100,100]
   end
   # Choose what kind of storage to use for this uploader:
-  # storage :file
-  # if Rails.env.production? 
-  if true
+  storage :file
+
+  if Rails.env.production? 
     storage :fog
   else
     storage :file
