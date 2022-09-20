@@ -37,7 +37,8 @@ Things you may want to cover:
 - Model Category many to many with product through product_category
 - Using db seed to set master data
 
-- Home page // List categories: each categories show 5 latest products
+- Home page 
+- List categories: each categories show 5 latest products
 // Homepage: menu categories: Menu of web
 // Category page: List all products of categories
 - Product details

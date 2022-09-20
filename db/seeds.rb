@@ -47,18 +47,18 @@ users.each{
 # end
 
 cates = ["Lifestyle", "Jordan", "Running", "Basketball", "Football", "Training & Gym", "Skateboarding", "Golf", "Tennis",
-        "Athletics", "Walking"]
+        "Athletics", "Walking", "Baseball", "Volleyball"]
 cates.each do |cate|
     Category.create!(name: cate)
 end
 
-sizes = ["S", "X", "M", "L", 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
+sizes = Array(30..50)
 sizes.each do |size|
     Size.create!(name: size)
 end
 
 colors = ["Black", "Silver", "Gray", "White", "Maroon", "Red", "Purple", "Fuchsia", "Green",
-        "Lime", "Olive", "Yellow", "Navy", "Blue", "Teal", "Aqua"]
+        "Lime", "Olive", "Yellow", "Navy", "Blue", "Teal", "Aqua", "Pink", "Orange", "Brown"]
 colors.each do |color|
     Color.create!(name: color)
 end
