@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_054419) do
     t.bigint "cart_session_id"
     t.bigint "product_id"
     t.integer "quantity"
+    t.string "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_session_id"], name: "index_cart_items_on_cart_session_id"
@@ -48,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_054419) do
     t.bigint "order_id"
     t.bigint "product_id"
     t.integer "quantity"
+    t.string "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"

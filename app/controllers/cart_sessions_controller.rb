@@ -64,8 +64,11 @@ class CartSessionsController < ApplicationController
         OrderItem.create(order_item_attrs(@order, cart_item))
       end
       @cart_session.cart_items.each do |cart_item|
-        quantity = cart_item.product.quantity_remain
-        cart_item.product.update_attribute(:quantity_remain, quantity - cart_item.quantity)
+        cart_item.product.product_sizes.each do |product_size|
+          if product_size.size.name == cart_item.size
+            product_size.update_attribute(:quantity, 5)
+          end
+        end
       end
       @cart_session.destroy
       flash[:success] = "Order was successfully"
@@ -90,7 +93,8 @@ class CartSessionsController < ApplicationController
       {
         order_id: order.id,
         product_id: cart_item.product_id,
-        quantity: cart_item.quantity
+        quantity: cart_item.quantity,
+        size: cart_item.size
       }
     end
 end
