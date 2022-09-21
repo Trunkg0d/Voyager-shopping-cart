@@ -119,6 +119,11 @@ class ProductsController < ApplicationController
         redirect_to shop_path(@product.shop)
     end
 
+    # def search
+    #     @q = Product.ransack(params[:q])
+    #     @products = @q.result(distinct: true)
+    # end
+
     private
         def product_params
             params.require(:product).permit(:name, :price, :quantity_remain, :description, images: [], category_ids:[], size_ids: [], color_ids: [])

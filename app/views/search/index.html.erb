@@ -1,0 +1,10 @@
+<h1 class="text-center"><%=pluralize(@products.count, "Result")%></h1>
+<%= render "search_form"%>
+
+<div class="container px-4 px-lg-5 mt-4">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <% @products.each do |product|%>
+                <%= render product%>
+        <% end %>
+    </div>
+</div>
