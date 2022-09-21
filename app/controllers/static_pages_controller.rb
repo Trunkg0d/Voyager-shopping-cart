@@ -16,4 +16,9 @@ class StaticPagesController < ApplicationController
 
   def catalogue
   end
+
+  def search
+    @query = Product.ransack(params[:q])
+    @products = @query.result(distinct: true)
+  end
 end

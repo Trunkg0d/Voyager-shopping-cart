@@ -1,0 +1,26 @@
+<%=render "layouts/header"%>
+<div class="shop-banner">
+  <div class="text-center py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0 ">
+      <%= image_tag "banner-category-top.webp", style: "width: 95%; height: 260px"%>
+  </div>
+  <div class="bottom-left fs-5 text-white w-50">
+      <h1>Latest Arrivals</h1>
+      <p style="color:white">
+          When it's time to head out and get your Kicks on, have a
+          look at our latest arrivals. Whether you're into Nike, 
+          Adidas, Dunks or New Balance, we really have 
+          something for everyone!
+  </div>
+</div>
+<div class="row justify-content-center mb-2">
+            <div class="col-md-7 site-section-heading text-center pt-4">
+                <h2><%=pluralize(@products.count, "Result")%></h2>
+            </div>
+</div>
+<div class="container px-4 px-lg-5 mt-4">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <% @products.each do |product|%>
+                <%= render product%>
+        <% end %>
+    </div>
+</div>
