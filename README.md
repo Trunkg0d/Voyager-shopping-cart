@@ -40,7 +40,7 @@ Things you may want to cover:
 - Home page 
 - List categories: each categories show 5 latest products
 // Homepage: menu categories: Menu of web
-// Category page: List all products of categories
+- Category page: List all products of categories
 - Product details
 // Search product by name: List product by name //
 
