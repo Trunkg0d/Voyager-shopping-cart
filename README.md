@@ -42,14 +42,14 @@ Things you may want to cover:
 // Homepage: menu categories: Menu of web
 - Category page: List all products of categories
 - Product details
-// Search product by name: List product by name //
+- Search product by name: List product by name 
 
 - Sign up customer
 - Signin/Signout customer
 - Edit customer profile
 - Add to cart
 - Update date cart
-// Finish order:
+- Finish order:
     - store order to database
-    // send email to shop, customer
+    - send email to shop, customer
 // List orders history of customer
