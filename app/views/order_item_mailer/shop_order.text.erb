@@ -1,0 +1,10 @@
+Hello <%= @order_item.product.shop.name %> Shop,
+We need you to send this order directly to the end customer without valued documents. Thank you. 
+Send the order to:
+Customer name: <%= @order_item.order.user.name %>
+Address: <%= @order_item.order.user.address %>
+Email: <%= @order_item.order.user.email %>
+Product: 
+Product name: <%= @order_item.product.name %>
+Quantity: <%= @order_item.quantity %>
+Sum money: <%= @order_item.product.price * @order_item.quantity %> $
