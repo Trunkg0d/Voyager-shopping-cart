@@ -15,4 +15,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset(user)
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/customer_order
+  def customer_order
+    user = User.first
+    UserMailer.customer_order(user)
+  end
+
 end

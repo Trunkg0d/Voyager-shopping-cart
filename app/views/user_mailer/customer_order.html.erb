@@ -1,0 +1,23 @@
+<div style=" margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;">
+    <h2>Hello <%= @user.name %>,<br></h2> 
+    <p>
+    We’re happy to let you know that we’ve received your order. <br><br>
+
+    Once your package ships, we will send you an email with a tracking number and link <br> so you can see the movement of your package. <br><br>
+
+    If you have any questions, contact us here or call us on website! <br><br>
+
+    We are here to help! <br><br>
+    </p>
+    <h3>TRACK YOUR ORDER: <br></h3>
+    <% @user.orders.last.order_items.each do |order_item| %>
+        <h4> <%= order_item.product.name %></h4>
+        <p>- Quantity: <%= order_item.quantity %></p>
+        <p>- Price per one: <%= order_item.product.price %> $</p>
+        <p>- Money for this product: <%= order_item.product.price * order_item.quantity %></p>
+        <p>******************************</p>
+    <% end %>
+</div>

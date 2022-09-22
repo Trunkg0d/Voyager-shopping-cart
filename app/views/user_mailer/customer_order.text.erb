@@ -1,0 +1,18 @@
+Hello <%= @user.name %>,
+
+We’re happy to let you know that we’ve received your order. 
+
+Once your package ships, we will send you an email with a tracking number and link so you can see the movement of your package.
+
+If you have any questions, contact us here or call us on website!
+
+We are here to help!
+
+TRACK YOUR ORDER:
+<% @user.orders.last.order_items.each do |order_item| %>
+    <%= order_item.product.name %>
+    - Quantity: <%= order_item.quantity %>
+    - Price per one: <%= order_item.product.price %> $
+    - Money for this product: <%= order_item.product.price * order_item.quantity %>
+    ******************************
+<% end %>

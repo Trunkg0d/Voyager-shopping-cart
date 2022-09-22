@@ -30,6 +30,7 @@ class User < ApplicationRecord
     has_one :shop 
 
     has_many :cart_sessions
+    has_many :orders
 
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -83,6 +84,11 @@ class User < ApplicationRecord
     # Sends password reset email.
     def send_password_reset_email
         UserMailer.password_reset(self).deliver_now
+    end
+
+    #Sends order details to customer
+    def send_customer_order_email
+        UserMailer.customer_order(self).deliver_now
     end
 
     # Returns true if a password reset has expired.
