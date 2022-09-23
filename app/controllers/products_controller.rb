@@ -104,7 +104,7 @@ class ProductsController < ApplicationController
         end
         @product.update_attribute(:quantity_remain, total)
       
-        redirect_to @product
+        redirect_to edit_product_path(@product)
     end
 
     def publicProduct

@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   #category
   
 
-
   resources :shops
   resources :products
   resources :cart_sessions
@@ -46,4 +45,5 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :categories
+  resources :orders
 end
