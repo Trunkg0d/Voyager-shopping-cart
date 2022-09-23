@@ -85,13 +85,27 @@
                                 <%= link_to "Private", privateProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
                             </div>
                       </div>
-                  <% else %>
+                    <% else %>
                       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
                                 <%= link_to "Public", publicProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
                             </div>
                       </div>
-                  <% end %>
+                    <% end %>
+
+                    <% if isSale?(@product) %>
+                      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <%= link_to "Not for Sale", unsale_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                            </div>
+                      </div>
+                    <% else %>
+                      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <%= link_to "Sale", sale_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                            </div>
+                      </div>
+                    <% end %>
                   <% end %>
                   
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
