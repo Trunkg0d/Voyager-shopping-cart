@@ -25,4 +25,11 @@ module ProductsHelper
         end
         sum
     end
+
+    def isSale?(product)
+        if product.sale == 1
+            return true
+        end
+        return false
+    end
 end

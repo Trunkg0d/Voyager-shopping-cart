@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   patch '/products/:id/publicProduct', to: 'products#publicProduct'
   get '/products/:id/privateProduct', to: 'products#privateProduct', as: 'privateProduct'
   patch '/products/:id/privateProduct', to: 'products#privateProduct'
+  get '/products/:id/sale', to: 'products#sale', as: 'sale'
+  patch '/products/:id/sale', to: 'products#sale'
+  get '/products/:id/unsale', to: 'products#unsale', as: 'unsale'
+  patch '/products/:id/unsale', to: 'products#unsale'
 
   #cart_item
 

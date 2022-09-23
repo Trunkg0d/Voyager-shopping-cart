@@ -110,13 +110,25 @@ class ProductsController < ApplicationController
     def publicProduct
         @product = Product.find_by(id: params[:id], shop: current_shop)
         @product.update_attribute(:public, 1)
-        redirect_to shop_path(@product.shop)
+        redirect_to edit_product_path(@product)
     end
 
     def privateProduct
         @product = Product.find_by(id: params[:id], shop: current_shop)
         @product.update_attribute(:public, 0)
-        redirect_to shop_path(@product.shop)
+        redirect_to edit_product_path(@product)
+    end
+
+    def sale
+        @product = Product.find_by(id: params[:id], shop: current_shop)
+        @product.update_attribute(:sale, 1)
+        redirect_to edit_product_path(@product)
+    end
+
+    def unsale
+        @product = Product.find_by(id: params[:id], shop: current_shop)
+        @product.update_attribute(:sale, 0)
+        redirect_to edit_product_path(@product)
     end
 
     private
