@@ -14,7 +14,10 @@ class ProductsController < ApplicationController
     end
 
     def new
-    	@product = Product.new 
+    	@product = Product.new(product_params)
+        if product_params.present?
+            @product.validate
+          end 
   	end
 
     def create
@@ -23,7 +26,7 @@ class ProductsController < ApplicationController
             flash[:success] = "Product created!"
             redirect_to shop_path(current_shop.id)
         else
-            render 'new'
+            redirect_to new_product_url(product: product_params)
         end
     end
 
@@ -133,6 +136,6 @@ class ProductsController < ApplicationController
 
     private
         def product_params
-            params.require(:product).permit(:name, :price, :quantity_remain, :description, images: [], category_ids:[], size_ids: [], color_ids: [])
+            params.fetch(:product, {}).permit(:name, :price, :quantity_remain, :description, images: [], category_ids:[], size_ids: [], color_ids: [])
         end
 end
