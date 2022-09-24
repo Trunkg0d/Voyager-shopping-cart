@@ -4,6 +4,6 @@ class OrderItem < ApplicationRecord
 
     #Sends order details to shop
     def send_shop_order_email
-        OrderItemMailer.shop_order(self).deliver_now
+        OrderItemMailer.shop_order(self).deliver_later
     end
 end

@@ -72,7 +72,7 @@ class User < ApplicationRecord
     
     # Sends activation email.
     def send_activation_email
-        UserMailer.account_activation(self).deliver_now
+        UserMailer.account_activation(self).deliver_later
     end
 
     def create_reset_digest
@@ -83,12 +83,12 @@ class User < ApplicationRecord
 
     # Sends password reset email.
     def send_password_reset_email
-        UserMailer.password_reset(self).deliver_now
+        UserMailer.password_reset(self).deliver_later
     end
 
     #Sends order details to customer
     def send_customer_order_email
-        UserMailer.customer_order(self).deliver_now
+        UserMailer.customer_order(self).deliver_later
     end
 
     # Returns true if a password reset has expired.
