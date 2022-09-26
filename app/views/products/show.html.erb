@@ -18,19 +18,25 @@
     </div>  
       <div class="panel-body d-flex">
           <div class="col-md-6">
-              <div class="pro-img-details">
-                  <%= image_tag @product.images[0].thumb.url, class: "img-fluid", style: "width: 550px; height: 380px"%>
-              </div>
-              <div class="pro-img-list">
-                    <% for i in 1...@product.images.count %>
-                        <a href="#">
-                            <%= image_tag @product.images[i].thumb.url, class: "img-fluid", style: "width: 115px; height: 100px"%>
-                        </a>
-                        <% if i == 4 %>
-                            <% break %>
-                        <% end %>
-                    <% end %>
-              </div>
+            <% if @product.images? %>
+                <div class="pro-img-details">
+                    <%= image_tag @product.images[0].thumb.url, class: "img-fluid", style: "width: 550px; height: 380px"%>
+                </div>
+                <div class="pro-img-list">
+                      <% for i in 1...@product.images.count %>
+                          <a href="#">
+                              <%= image_tag @product.images[i].thumb.url, class: "img-fluid", style: "width: 115px; height: 100px"%>
+                          </a>
+                          <% if i == 4 %>
+                              <% break %>
+                          <% end %>
+                      <% end %>
+                </div>
+            <% else %>
+                <div class="pro-img-details">
+                    <%= image_tag "/assets/KD15/KD15.jpg", class: "img-fluid", style: "width: 450px; height: 400px"%>
+                </div>
+            <% end %>
           </div>
           <div class="col-md-6 product-des">
               <h4 class="pro-d-title">

@@ -19,5 +19,5 @@ class Product < ApplicationRecord
     validates :size_ids, presence: true
 
     # validates :quantity_remain, presence: true
-    validates :images, presence: true
+    # validates :images, presence: true
 end
