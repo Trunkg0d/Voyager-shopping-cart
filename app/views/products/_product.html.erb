@@ -9,17 +9,19 @@
         <% if product.images? %>
             <%= image_tag product.images[0].thumb.url %>
         <% else %>
-            <% if product.name == "Nike KD 15"%>
-                <%= image_tag "/assets/KD15/KD15.jpg", class:"img-fluid"%>
-            <% elsif product.name == "Nike Air Force 1" %>
-                <%= image_tag "/assets/NikeAirForce1/NikeAirForce1.jpg", class:"img-fluid"%>
-            <% elsif product.name == "Nike Air Max 90" %>
-                <%= image_tag "/assets/NikeAirMax90/NikeAirMax90.jpg", class:"img-fluid"%>
-            <% elsif product.name == "Nike Infinity" %>
-                <%= image_tag "/assets/NikeInfinityRun3/NikeInfinityRun3.jpg", class:"img-fluid"%>
-            <% else %>
-                <%= image_tag "/assets/avatar/product.png", class:"img-fluid" %>
-            <% end %>
+            <div style="height:178px">
+              <% if product.name == "Nike KD 15"%>
+                  <%= image_tag "/assets/KD15/KD15.jpg", class:"img-fluid1"%>
+              <% elsif product.name == "Nike Air Force 1" %>
+                  <%= image_tag "/assets/NikeAirForce1/NikeAirForce1.jpg", class:"img-fluid1"%>
+              <% elsif product.name == "Nike Air Max 90" %>
+                  <%= image_tag "/assets/NikeAirMax90/NikeAirMax90.jpg", class:"img-fluid1"%>
+              <% elsif product.name == "Nike Infinity" %>
+                  <%= image_tag "/assets/NikeInfinityRun3/NikeInfinityRun3.jpg", class:"img-fluid1" %>
+              <% else %>
+                  <%= image_tag "/assets/avatar/product.png", class:"img-fluid1" %>
+              <% end %>
+            </div>
         <% end %>
         <!-- Product details-->
         <div class="card-body p-4">
