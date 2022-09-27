@@ -98,7 +98,11 @@ class ProductsController < ApplicationController
         quantities = params[:product_size][:quantity]
   
         for i in 0...@product.product_sizes.length
-          @product.product_sizes[i].update_attribute(:quantity, quantities[i])
+            if quantities[i].to_i >= 0
+                @product.product_sizes[i].update_attribute(:quantity, quantities[i])
+            elsif quantities[i].to_i < 0
+                flash[:danger] = "Quantity must be greater than zero"
+            end
         end
       
         total = 0
