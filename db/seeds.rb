@@ -82,8 +82,8 @@ followers.each { |follower| follower.follow(user) }
 
 users = User.all
 users.each do |user|
-    user.shop.products.create!(name: "Nike KD 15", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13])
-    user.shop.products.create!(name: "Nike Air Force 1", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13])
+    user.shop.products.create!(name: "Nike KD 15", price: 150, description:"Limited edition",public: 1, sale:1, size_ids:[5,7,10],color_ids:[1,13])
+    user.shop.products.create!(name: "Nike Air Force 1", price: 150, description:"Limited edition",public: 1, sale: 1, size_ids:[5,7,10],color_ids:[1,13])
     user.shop.products.create!(name: "Nike Air Max 90", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13])
     user.shop.products.create!(name: "Nike Infinity", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13]) 
 end
