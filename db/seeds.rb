@@ -22,15 +22,24 @@ User.create!(name: "Example User",
 end
 
 users = User.all
+shop_name = ["Adidas", "Nike", "New Balance", "Converse", "Vans"]
+shop_description = [
+    "Impossible is nothing",
+    "Just do it",
+    "There are two motivations in sports. Which is yours? For Love or Money?",
+    "Wear with everything",
+    "Off The Wall"
+]
 users.each{
     |user|
-    description = "Nike, Inc. is an American multinational corporation that is engaged in the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment, accessories, and services"
+    ran_num = rand(0..4)
+    description = shop_description[ran_num]
     avatar = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Nike_Flagship_-_NYC_%2848155560636%29.jpg/270px-Nike_Flagship_-_NYC_%2848155560636%29.jpg"
-    Shop.create!(name: "Tiki", description: description, avatar: avatar, user_id: user.id )
+    Shop.create!(name: shop_name[ran_num], description: description, avatar: avatar, user_id: user.id )
 }
 
 cates = ["Lifestyle", "Jordan", "Running", "Basketball", "Football", "Training & Gym", "Skateboarding", "Golf", "Tennis",
-        "Athletics", "Walking", "Baseball", "Volleyball"]
+        "Athletics", "Walking", "Baseball", "Volleyball", "Business", "Dance"]
 cates.each do |cate|
     Category.create!(name: cate)
 end
