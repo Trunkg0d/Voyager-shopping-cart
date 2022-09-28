@@ -60,25 +60,36 @@ class ProductsController < ApplicationController
     def getProduct
         @product = Product.find(params[:id])
         getId(@product)
-        @cart_item = CartItem.new
-        @cart_item.quantity = params[:quantity]
-        @cart_item.size = Size.find(params[:size_product]).name
-        @cart_item.cart_session_id = current_cart_session.id
-        @cart_item.product_id = current_product.id
-        if (count_cart_sessions == 2)
-          first_cart_session.destroy
-        end
-        total = @cart_item.cart_session.sum_money
-        total += @cart_item.product.price * @cart_item.quantity
-        @cart_item.cart_session.update_attribute(:sum_money, total)
+        if params[:size_product].present?
+            real_quantity = @product.product_sizes.find_by(size_id: params[:size_product]).quantity
+            if params[:quantity].to_i <= real_quantity
+                @cart_item = CartItem.new
+                @cart_item.quantity = params[:quantity]
+                @cart_item.size = Size.find(params[:size_product]).name
+                @cart_item.cart_session_id = current_cart_session.id
+                @cart_item.product_id = current_product.id
+                if (count_cart_sessions == 2)
+                  first_cart_session.destroy
+                end
+                total = @cart_item.cart_session.sum_money
+                total += @cart_item.product.price * @cart_item.quantity
+                @cart_item.cart_session.update_attribute(:sum_money, total)
 
-        if @cart_item.save
-          flash[:success] = "Add product successfully"
+                if @cart_item.save
+                  flash[:success] = "Add product successfully"
+                else
+                  render 'new'
+                end
+
+                redirect_to @product
+            else
+                flash[:danger] = "The size you choose is not enough product"
+                redirect_to @product
+            end
         else
-          render 'new'
+            flash[:danger] = "Please choose product size"
+            redirect_to @product
         end
-
-        redirect_to @product
     end
 
     def createCartSession
