@@ -84,9 +84,11 @@
                                     <% end %>
                             </div>
                         </div>
-                        <%= form.label :quantity, "Quantity" %>
-                        <%= form.number_field :quantity %>
-                        <%= form.submit "Add to cart", class:"btn btn-round btn-danger" %>
+                        <%= form.label :quantity, "Quantity" %> <br/>
+                        <input type="button" value="-" class="btn_quantity">
+                            <%= form.text_field :quantity, value: 1, class: "btn_quantity" %>
+                        <input type="button" value="+" class="btn_quantity">
+                        <%= form.submit "Add to Cart", class: "btn btn-danger" %>
                     <% end %>
                 <% end %>
               </div>
@@ -95,3 +97,5 @@
 </section>
 </div>
 </div>
+
+<%= javascript_importmap_tags("custom/change_quantity") %>
