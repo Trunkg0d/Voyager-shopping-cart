@@ -175,6 +175,18 @@ body{margin-top:20px;
     max-height: 99%;
   }
 
+.btn_quantity {
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    color: #2A3132;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
 @media screen and (min-width: 1270px) {
     .product-res{
         height:178.66px;
