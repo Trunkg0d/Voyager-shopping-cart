@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+    acts_as_paranoid
     belongs_to :shop
 
     has_many :product_categories
@@ -10,6 +11,7 @@ class Product < ApplicationRecord
     has_many :colors, through: :product_colors
 
     has_one :cart_item, dependent: :destroy
+    has_one :order_item
     default_scope -> {order(created_at: :desc)}
     mount_uploaders :images, ImageUploader
     serialize :images

@@ -6,6 +6,7 @@ ruby "3.1.2"
 gem "carrierwave"
 gem "font-awesome-sass", "~> 6.1.2"
 gem 'sass-rails'
+gem 'paranoia'
 # Faker & Pagination
 # gem 'faker', '2.1.2'
 gem 'will_paginate', '3.3'

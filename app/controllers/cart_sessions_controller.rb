@@ -73,10 +73,10 @@ class CartSessionsController < ApplicationController
       @cart_session.destroy
       flash[:success] = "Order was successfully, please check your mail to confirm"
       redirect_to root_path
-      @order.order_items.each do |order_item|
-        order_item.send_shop_order_email
-      end
-      @order.user.send_customer_order_email
+      # @order.order_items.each do |order_item|
+      #   order_item.send_shop_order_email
+      # end
+      # @order.user.send_customer_order_email
     else
       flash[:danger] = "Order was rejected"
     end
