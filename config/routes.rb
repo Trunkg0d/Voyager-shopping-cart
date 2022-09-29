@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   patch '/products/:id/sale', to: 'products#sale'
   get '/products/:id/unsale', to: 'products#unsale', as: 'unsale'
   patch '/products/:id/unsale', to: 'products#unsale'
+  get '/filter', to: 'products#filter'
 
   #cart_item
 

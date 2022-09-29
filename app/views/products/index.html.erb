@@ -139,7 +139,7 @@
                         <div class="filter-options" data-pixr-simplebar>
                             <% Shop.all.each.map{|shop| shop.name}.uniq.each do |brand| %>
                                 <div class="form-group form-check-custom mb-1">
-                                <input type="checkbox" class="form-check-input" id="filter-brands-modal-0">
+                                <input type="checkbox" class="form-check-input" id="filter-brands-modal-0" name="brand_filter">
                                 <label class="form-check-label fw-normal text-body flex-grow-1 d-flex align-items-center"
                                     for="filter-brands-modal-0"><%=brand%>
                                     <span
@@ -198,7 +198,8 @@
     
           <!-- Filter Button-->
           <div class="border-top pt-3">
-            <a href="#" class="btn btn-dark mt-2 d-block hover-lift-sm hover-boxshadow" data-bs-dismiss="offcanvas" aria-label="Close">Done</a>
+            <%# <a href="filter_path" class="btn btn-dark mt-2 d-block hover-lift-sm hover-boxshadow" data-bs-dismiss="offcanvas" aria-label="Close">Done</a> %>
+            <%= link_to "Done", filter_path,class:"btn btn-dark mt-2 d-block hover-lift-sm hover-boxshadow"%>
           </div>
           <!-- /Filter Button-->
         </div>
