@@ -137,13 +137,13 @@
                     </div>
                     <div class="simplebar-wrapper">
                         <div class="filter-options" data-pixr-simplebar>
-                            <% Shop.all.each do |shop| %>
+                            <% Shop.all.each.map{|shop| shop.name}.uniq.each do |brand| %>
                                 <div class="form-group form-check-custom mb-1">
                                 <input type="checkbox" class="form-check-input" id="filter-brands-modal-0">
                                 <label class="form-check-label fw-normal text-body flex-grow-1 d-flex align-items-center"
-                                    for="filter-brands-modal-0"><%=shop.name%>
+                                    for="filter-brands-modal-0"><%=brand%>
                                     <span
-                                        class="text-muted ms-1 fs-9">(<%= shop.products.count %>)
+                                        class="text-muted ms-1 fs-9">(<%= Shop.all.map{|shop| shop.products.count if shop.name == brand}.compact.sum %>)
                                     </span>
                                 </label>
                             </div> 
