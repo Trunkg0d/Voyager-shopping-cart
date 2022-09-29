@@ -149,6 +149,11 @@ class ProductsController < ApplicationController
         redirect_to edit_product_path(@product)
     end
 
+    def filter
+        puts params[:brand_filter]
+        # @products = Product.find(params[:brand_filter])
+    end
+
     private
         def product_params
             params.fetch(:product, {}).permit(:name, :price, :quantity_remain, :description, images: [], category_ids:[], size_ids: [], color_ids: [])
