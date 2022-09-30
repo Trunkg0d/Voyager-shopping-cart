@@ -120,7 +120,7 @@
                 </div>          </div>
             </div>
             <!-- / Price Filter -->
-    
+            <%= form_tag filter_path, :method => 'get' do %>
             <!-- Brands Filter -->
             <div class="py-4 widget-filter border-top">
                 <a class="small text-body text-decoration-none text-secondary-hover transition-all transition-all fs-6 fw-bolder d-block collapse-icon-chevron"
@@ -137,18 +137,12 @@
                     </div>
                     <div class="simplebar-wrapper">
                         <div class="filter-options" data-pixr-simplebar>
-  
-
-                            <%= form_tag filter_path, :method => 'get' do %>
-                                <% Shop.all.each.map{|shop| shop.name}.uniq.each do |brand| %>
-                                    <div class="form-group form-check-custom mb-1">
-                                        <%= check_box 'brand', 'result', {}, 1, 0 %>
-                                        <%= label_tag(:brand, "#{brand}") %>
-                                    </div> 
-                                <% end %>
-                                <%= submit_tag "Filter" %>
+                            <% Shop.all.each.map{|shop| shop.name}.uniq.each do |brand| %>
+                                <div class="form-group form-check-custom mb-1">
+                                    <%= check_box("brand", "commands", {:multiple => true}, brand, nil) %>
+                                    <%= label_tag(:brand, "#{brand}") %>
+                                </div> 
                             <% end %>
-
                         </div>
                     </div>
                 </div>
@@ -166,8 +160,8 @@
                     <div class="filter-options mt-3">
                     <% Size.all.each do |size| %>
                         <div class="form-group d-inline-block mr-2 mb-2 form-check-bg form-check-custom">
-                            <input type="checkbox" class="form-check-bg-input" id="filter-sizes-modal-0">
-                            <label class="form-check-label fw-normal" for="filter-sizes-modal-0"><%= size.name %></label>
+                            <%= check_box("size", "commands", {:multiple => true}, size.name , nil) %>
+                            <%= label_tag(:size, "#{size.name}", class:"form-check-label fw-normal") %>
                         </div>  
                     <% end %>                                    
                     </div>
@@ -180,14 +174,14 @@
                 <a class="small text-body text-decoration-none text-secondary-hover transition-all transition-all fs-6 fw-bolder d-block collapse-icon-chevron"
                     data-bs-toggle="collapse" href="#filter-modal-colour" role="button" aria-expanded="true"
                     aria-controls="filter-modal-colour">
-                    Colour
+                    Category
                 </a>
                 <div id="filter-modal-colour" class="collapse show">
                     <div class="filter-options mt-3">
-                        <% Color.all.each do |color| %>
+                        <% Category.all.each do |category| %>
                             <div class="form-group d-inline-block mr-1 mb-1 form-check-solid-bg-checkmark form-check-custom form-check-primary">
-                                <input type="checkbox" class="form-check-color-input" id="filter-colours-modal-0">
-                                <label class="form-check-label" for="filter-colours-modal-0"><%=color.name%></label>
+                                <%= check_box("category", "commands", {:multiple => true}, category.name , nil) %>
+                                <%= label_tag(:category, "#{category.name}", class:"form-check-label fw-normal") %>
                             </div>
                         <% end %>                                    
                     </div>
@@ -199,8 +193,8 @@
     
           <!-- Filter Button-->
           <div class="border-top pt-3">
-            <%# <a href="filter_path" class="btn btn-dark mt-2 d-block hover-lift-sm hover-boxshadow" data-bs-dismiss="offcanvas" aria-label="Close">Done</a> %>
-            <%= link_to "Done", filter_path,class:"btn btn-dark mt-2 d-block hover-lift-sm hover-boxshadow"%>
+            <%= submit_tag "Done", class:"btn btn-dark mt-2 d-block hover-lift-sm hover-boxshadow" %>
+            <% end %>
           </div>
           <!-- /Filter Button-->
         </div>
