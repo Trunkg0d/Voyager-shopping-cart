@@ -60,25 +60,8 @@ class CartSessionsController < ApplicationController
   def checkout
     @order = Order.new(@cart_session.attributes)
 
-    check = true
-    cart_items = @cart_session.cart_items
-    for i in (0...cart_items.length())
-      total = cart_items[i].quantity
-      for j in (i+1...cart_items.length())
-        if cart_items[i].size == cart_items[j].size
-          total += cart_items[j].quantity
-        end
-      end
-      cart_items[i].product.product_sizes.each do |product_size|
-        if cart_items[i].size = product_size.size.name 
-          if total > product_size.quantity
-            check = false
-          end
-        end
-      end
-    end  
-    if check == false 
-      flash[:danger] = "ABC"
+    if check_quantity_cart(@cart_session)[0] == false 
+      flash[:danger] = "Don't enough size for #{check_quantity_cart(@cart_session)[1].product.name}"
       redirect_to root_path
     else
       if @order.save
