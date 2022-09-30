@@ -59,33 +59,54 @@ class CartSessionsController < ApplicationController
 
   def checkout
     @order = Order.new(@cart_session.attributes)
-    if @order.save
-      @cart_session.cart_items.each do |cart_item|
-        OrderItem.create(order_item_attrs(@order, cart_item))
+
+    check = true
+    cart_items = @cart_session.cart_items
+    for i in (0...cart_items.length())
+      total = cart_items[i].quantity
+      for j in (i+1...cart_items.length())
+        if cart_items[i].size == cart_items[j].size
+          total += cart_items[j].quantity
+        end
       end
-      @cart_session.cart_items.each do |cart_item|
-        cart_item.product.product_sizes.each do |product_size|
-          if product_size.size.name == cart_item.size
-            number = product_size.quantity 
-            number -= cart_item.quantity
-            product_size.update_attribute(:quantity, number)
+      cart_items[i].product.product_sizes.each do |product_size|
+        if cart_items[i].size = product_size.size.name 
+          if total > product_size.quantity
+            check = false
           end
         end
-        total = 0
-        cart_item.product.product_sizes.each do |product_size|
-          total += product_size.quantity
-        end
-        cart_item.product.update_attribute(:quantity_remain, total)
       end
-      @cart_session.destroy
-      flash[:success] = "Order was successfully, please check your mail to confirm"
+    end  
+    if check == false 
+      flash[:danger] = "ABC"
       redirect_to root_path
-      # @order.order_items.each do |order_item|
-      #   order_item.send_shop_order_email
-      # end
-      # @order.user.send_customer_order_email
     else
-      flash[:danger] = "Order was rejected"
+      if @order.save
+        @cart_session.cart_items.each do |cart_item|
+          OrderItem.create(order_item_attrs(@order, cart_item))
+          cart_item.product.product_sizes.each do |product_size|
+            if product_size.size.name == cart_item.size
+              number = product_size.quantity 
+              number -= cart_item.quantity
+              product_size.update_attribute(:quantity, number)
+            end
+          end
+          total = 0
+          cart_item.product.product_sizes.each do |product_size|
+            total += product_size.quantity
+          end
+          cart_item.product.update_attribute(:quantity_remain, total)
+        end
+        @cart_session.destroy
+        flash[:success] = "Order was successfully, please check your mail to confirm"
+        redirect_to root_path
+        # @order.order_items.each do |order_item|
+        #   order_item.send_shop_order_email
+        # end
+        # @order.user.send_customer_order_email
+      else
+        flash[:danger] = "Order was rejected"
+      end
     end
   end
 
