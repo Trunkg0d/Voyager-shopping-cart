@@ -150,8 +150,7 @@ class ProductsController < ApplicationController
     end
 
     def filter
-        puts params[:brand_filter]
-        # @products = Product.find(params[:brand_filter])
+        @products = Product.all
     end
 
     private
