@@ -56,9 +56,66 @@
               </li>
 
               <% if !current_cart_session.nil?%>
-                <li class="nav-item">
-                  <%=link_to "", cart_session_path(current_cart_session), class:"nav-link active fa-solid fa-cart-shopping mt-2"%>
-                </li>
+                <!-- Button trigger modal -->
+                <button type="button" class="nav-link active fa-solid fa-cart-shopping mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: none; background:white">
+
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Your Cart</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <% current_cart_session.cart_items.each do |cart_item| %>
+                          <div class="card mb-3">
+                            <div class="card-body">
+                              <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                  <div>
+                                    <%= image_tag cart_item.product.images[0].thumb.url, :style => "border: 1px solid gray; width: 65px" if !cart_item.product.images[0].nil? %>
+                                  </div>
+                                  <div class="ms-3">
+                                    <h5>
+                                      <%= link_to "#{cart_item.product.name}", product_path(cart_item.product), style: "text-decoration:none; color: black"%>
+                                    </h5>
+                                    <h6>
+                                      <p class="small mb-0"><%= cart_item.product.color%></p>
+                                    </h6>
+                                  </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                  <div style="width: 100px; margin-right: 20px; padding-bottom: 7px">
+                                    <h5 class="mb-0">$<%= cart_item.product.price%></h5>
+                                  </div>
+
+                                  <div style="margin-right: 20px">
+                                    <%= form_with url: cart_item_path(cart_item), method: :put do |form| %>
+                                      <input type="button" value="-" class="btn_quantity">
+                                      <%= form.text_field :quantity_cart_item, value: cart_item.quantity, class: "btn_quantity" %>
+                                      <input type="button" value="+" class="btn_quantity">
+                                      <%= form.submit "edit", class:"btn btn-outline-dark mt-auto " %>
+                                    <% end %>
+                                  </div>
+                                  <div>
+                                    <%= button_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, cart_item, method: :delete, class:"btn btn-outline-dark mt-auto"%>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <%end%>
+                        <li class="nav-item">
+                          <%=link_to "View Cart", cart_session_path(current_cart_session), class:"btn btn-outline-dark mt-auto"%>
+                        </li>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <% end %>
           <%else%>
               <ul class="dropdown-menu", data-turbolinks="false">
