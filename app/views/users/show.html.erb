@@ -1,14 +1,13 @@
 <% provide(:title, @user.name) %>
 <%= render "layouts/header"%>
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
-    <div class="card p-4"> 
+    <div class="p-4 border border-dark rounded"> 
         <div class=" image d-flex flex-column justify-content-center align-items-center"> 
             <button class="btn btn-secondary"> 
-                <%# <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /> %>
                 <% if @user.avatar?%>
                     <%= image_tag @user.avatar.thumb.url %>
                 <%else%>
-                    <%= image_tag "/assets/avatar/user.png", height:100, width:100%>
+                    <%= image_tag "https://cdn-icons-png.flaticon.com/512/1077/1077114.png?w=360", height:100, width:100%>
                 <%end%>
             </button> 
             <span class="name mt-3"><%= @user.name %></span> 
@@ -31,8 +30,6 @@
                 <span>
                     Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.
                     <br>
-                    <br> 
-                    Artist/ Creative Director by Day #NFT minting@ with FND night. 
                 </span> 
             </div> 
             <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
