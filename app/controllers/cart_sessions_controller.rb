@@ -66,9 +66,16 @@ class CartSessionsController < ApplicationController
       @cart_session.cart_items.each do |cart_item|
         cart_item.product.product_sizes.each do |product_size|
           if product_size.size.name == cart_item.size
-            product_size.update_attribute(:quantity, 5)
+            number = product_size.quantity 
+            number -= cart_item.quantity
+            product_size.update_attribute(:quantity, number)
           end
         end
+        total = 0
+        cart_item.product.product_sizes.each do |product_size|
+          total += product_size.quantity
+        end
+        cart_item.product.update_attribute(:quantity_remain, total)
       end
       @cart_session.destroy
       flash[:success] = "Order was successfully, please check your mail to confirm"
