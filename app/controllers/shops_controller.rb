@@ -1,5 +1,4 @@
 class ShopsController < ApplicationController
-    before_action :edit_other_shop, only: [:edit, :update]
     def index
     end
 
@@ -28,15 +27,23 @@ class ShopsController < ApplicationController
 
     def edit
         @shop = Shop.find(params[:id]) 
+        if @shop != current_shop
+            flash[:danger] = "Can not edit other shop"
+            redirect_to root_path
+        end
     end
 
     def update
         @shop = Shop.find(params[:id])
-        if @shop.update(shop_params)
-            flash[:success] = "Updated your Shop"
-            redirect_to @shop
+        if @shop == current_shop
+            if @shop.update(shop_params)
+                flash[:success] = "Updated your Shop"
+                redirect_to @shop
+            else
+                render "edit"
+            end
         else
-            render "edit"
+            flash[:danger] = "Can't update other shop"
         end
     end
 
@@ -51,12 +58,5 @@ class ShopsController < ApplicationController
     private
         def shop_params
             params.require(:shop).permit(:name, :description, :avatar, :user_id)
-        end
-
-        def edit_other_shop
-            if request.path != edit_shop_path(current_shop)
-                flash[:danger] = "Can not edit another shop"
-                redirect_to current_shop
-            end
         end
 end
