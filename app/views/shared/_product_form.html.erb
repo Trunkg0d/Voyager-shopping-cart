@@ -3,115 +3,116 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-12 col-xl-11">
           <div class="card-body p-md-5">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+            <div class="border border-dark text-black" style="border-radius: 25px;">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Your Product</p>
+                  <%= form_with(model: @product, local: true) do |f| %>
+                    <%= render 'shared/error_messages', object: f.object %>
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Your Product</p>
-                <%= form_with(model: @product, local: true) do |f| %>
-                  <%= render 'shared/error_messages', object: f.object %>
+                    <div class="mb-3 ms-5">
+                      <% if @product.images?%>
+                        <%= image_tag @product.images[0].thumb.url %>
+                      <%else%>
+                        <%= image_tag "https://wowmart.vn/wp-content/uploads/2020/10/null-image.png", height:100, width:100%>
+                      <%end%>
 
-                  <div class="mb-3 ms-5">
-                    <% if @product.images?%>
-                      <%= image_tag @product.images[0].thumb.url %>
-                    <%else%>
-                      <%= image_tag "https://wowmart.vn/wp-content/uploads/2020/10/null-image.png", height:100, width:100%>
-                    <%end%>
-
-                    <span class="image">
-                      <%= f.label :images, "Add Product Image", class: "btn btn-outline-dark mt-auto", onclick:"document.getElementById('product_image_button').click()" %>
-                      <%= f.file_field :images, multiple: true, id:"product_image_button" %>
-                    </span>
-                  </div>
-                  
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-product-hunt fa-brands fa-lg me-3 fa-fw mt-4"></i>
-                    <div class="form-outline flex-fill mb-0">
-                        <%= f.label :name, "Product Name" %>
-                        <%= f.text_field :name, class: 'form-control' %>
-                    </div>
-                  </div>
-                    
-                    
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-solid fa-money-check-dollar fa-lg me-3 fa-fw mt-4"></i>
-                    <div class="form-outline flex-fill mb-0">
-                        <%= f.label :price %>
-                        <%= f.number_field :price, class: 'form-control' %>
-                    </div>
-                  </div>
-                    
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-solid fa-palette fa-lg me-3 fa-fw mt-4"></i>
-                    <div class="form-outline flex-fill mb-0">
-                        <%= label_tag :color_ids, "Color", class: "form-label" %>
-                        <%= f.select(:color_ids, Color.all.map { |c| [ c.name, c.id]}, {}, {multiple: true, class: "form-select select2"}) %>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-solid fa-maximize fa-lg me-3 fa-fw mt-4"></i>
-                    <div class="form-outline flex-fill mb-0">
-                        <%= label_tag :size_ids, "Sizes", class: "form-label" %>
-                        <%= f.select(:size_ids, Size.all.map { |c| [ c.name, c.id]}, {}, {multiple: true, class: "form-select select2"}) %>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-pencil fa-lg me-3 fa-fw mt-4"></i>
-                    <div class="form-outline flex-fill mb-0">
-                        <%= f.label :description, "Description" %>
-                        <%= f.text_field :description, class: 'form-control' %>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-solid fa-list fa-lg me-3 fa-fw mt-4"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <%= label_tag :category_ids, "Categories", class: "form-label" %>
-                      <%= f.select(:category_ids, Category.all.map { |c| [ c.name, c.id]}, {}, {multiple: true, class: "form-select select2"}) %>
-                    </div>
-                  </div>
-
-                  <% if request.path != new_product_path %>
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                          <div class="text-center">
-                              <%= link_to "Edit Quantity", edit_quantity_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
-                          </div>
+                      <span class="image">
+                        <%= f.label :images, "Add Product Image", class: "btn btn-outline-dark mt-auto", onclick:"document.getElementById('product_image_button').click()" %>
+                        <%= f.file_field :images, multiple: true, id:"product_image_button" %>
+                      </span>
                     </div>
                     
-                    <% if isPublic?(@product) %>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-product-hunt fa-brands fa-lg me-3 fa-fw mt-4"></i>
+                      <div class="form-outline flex-fill mb-0">
+                          <%= f.label :name, "Product Name" %>
+                          <%= f.text_field :name, class: 'form-control' %>
+                      </div>
+                    </div>
+                      
+                      
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-solid fa-money-check-dollar fa-lg me-3 fa-fw mt-4"></i>
+                      <div class="form-outline flex-fill mb-0">
+                          <%= f.label :price %>
+                          <%= f.number_field :price, class: 'form-control' %>
+                      </div>
+                    </div>
+                      
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-solid fa-palette fa-lg me-3 fa-fw mt-4"></i>
+                      <div class="form-outline flex-fill mb-0">
+                          <%= label_tag :color_ids, "Color", class: "form-label" %>
+                          <%= f.select(:color_ids, Color.all.map { |c| [ c.name, c.id]}, {}, {multiple: true, class: "form-select select2"}) %>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-solid fa-maximize fa-lg me-3 fa-fw mt-4"></i>
+                      <div class="form-outline flex-fill mb-0">
+                          <%= label_tag :size_ids, "Sizes", class: "form-label" %>
+                          <%= f.select(:size_ids, Size.all.map { |c| [ c.name, c.id]}, {}, {multiple: true, class: "form-select select2"}) %>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-pencil fa-lg me-3 fa-fw mt-4"></i>
+                      <div class="form-outline flex-fill mb-0">
+                          <%= f.label :description, "Description" %>
+                          <%= f.text_field :description, class: 'form-control' %>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-solid fa-list fa-lg me-3 fa-fw mt-4"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <%= label_tag :category_ids, "Categories", class: "form-label" %>
+                        <%= f.select(:category_ids, Category.all.map { |c| [ c.name, c.id]}, {}, {multiple: true, class: "form-select select2"}) %>
+                      </div>
+                    </div>
+
+                    <% if request.path != new_product_path %>
                       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <%= link_to "Private", privateProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                                <%= link_to "Edit Quantity", edit_quantity_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
                             </div>
                       </div>
-                    <% else %>
-                      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <%= link_to "Public", publicProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
-                            </div>
-                      </div>
+                      
+                      <% if isPublic?(@product) %>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                              <div class="text-center">
+                                  <%= link_to "Private", privateProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                              </div>
+                        </div>
+                      <% else %>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                              <div class="text-center">
+                                  <%= link_to "Public", publicProduct_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                              </div>
+                        </div>
+                      <% end %>
+
+                      <% if isSale?(@product) %>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                              <div class="text-center">
+                                  <%= link_to "Not for Sale", unsale_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                              </div>
+                        </div>
+                      <% else %>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                              <div class="text-center">
+                                  <%= link_to "Sale", sale_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
+                              </div>
+                        </div>
+                      <% end %>
                     <% end %>
-
-                    <% if isSale?(@product) %>
-                      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <%= link_to "Not for Sale", unsale_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
-                            </div>
-                      </div>
-                    <% else %>
-                      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <%= link_to "Sale", sale_path, class:"btn btn-outline-dark mt-auto", style: "width:137.78px" %>
-                            </div>
-                      </div>
-                    <% end %>
+                    
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <%= f.submit yield(:product_btn), class: "btn btn-outline-dark mt-auto" %>
+                    </div>
                   <% end %>
-                  
-                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <%= f.submit yield(:product_btn), class: "btn btn-outline-dark mt-auto" %>
-                  </div>
-                <% end %>
+                </div>
               </div>
             </div>
           </div>
