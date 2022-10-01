@@ -5,7 +5,9 @@ User.create!(name: "Example User",
     password: "foobar",
     password_confirmation: "foobar",
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    avatar: File.open(File.join(Rails.root, 'app', 'assets','images', 'men.webp'))
+)
 
 15.times do |n|
     name = "Trunk Lee"
@@ -82,8 +84,8 @@ followers.each { |follower| follower.follow(user) }
 
 users = User.all
 users.each do |user|
-    user.shop.products.create!(name: "Nike KD 15", price: 150, description:"Limited edition",public: 1, sale:1, size_ids:[5,7,10],color_ids:[1,13])
-    user.shop.products.create!(name: "Nike Air Force 1", price: 150, description:"Limited edition",public: 1, sale: 1, size_ids:[5,7,10],color_ids:[1,13])
-    user.shop.products.create!(name: "Nike Air Max 90", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13])
-    user.shop.products.create!(name: "Nike Infinity", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13]) 
+    user.shop.products.create!(name: "Nike KD 15", price: 150, description:"Limited edition",public: 1, sale:1, size_ids:[5,7,10],color_ids:[1,13], images: [File.open(File.join(Rails.root, 'app', 'assets','images', 'KD15', 'KD15.webp'))])
+    user.shop.products.create!(name: "Nike Air Force 1", price: 150, description:"Limited edition",public: 1, sale: 1, size_ids:[5,7,10],color_ids:[1,13], images: [File.open(File.join(Rails.root, 'app', 'assets','images', 'NikeAirForce1', 'NikeAirForce1.webp'))])
+    user.shop.products.create!(name: "Nike Air Max 90", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13], images: [File.open(File.join(Rails.root, 'app', 'assets','images', 'NikeAirMax90', 'NikeAirMax90.webp'))])
+    user.shop.products.create!(name: "Nike Infinity", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13], images: [File.open(File.join(Rails.root, 'app', 'assets','images', 'NikeInfinityRun3', 'NikeInfinityRun3.webp'))]) 
 end
