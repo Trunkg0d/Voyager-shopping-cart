@@ -89,3 +89,14 @@ users.each do |user|
     user.shop.products.create!(name: "Nike Air Max 90", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13], images: [File.open(File.join(Rails.root, 'app', 'assets','images', 'NikeAirMax90', 'NikeAirMax90.webp'))])
     user.shop.products.create!(name: "Nike Infinity", price: 150, description:"Limited edition",public: 1, size_ids:[5,7,10],color_ids:[1,13], images: [File.open(File.join(Rails.root, 'app', 'assets','images', 'NikeInfinityRun3', 'NikeInfinityRun3.webp'))]) 
 end
+
+User.create!(name: "Example User",
+    email: "trungsanglong@gmail.com",
+    phone: "0985879454",
+    address: "My Tho, Tien Giang, Viet Nam",
+    password: "foobar",
+    password_confirmation: "foobar",
+    activated: true,
+    activated_at: Time.zone.now,
+    avatar: File.open(File.join(Rails.root, 'app', 'assets','images', 'men.webp'))
+)
