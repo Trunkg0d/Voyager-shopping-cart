@@ -30,11 +30,21 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update(user_params)
-			flash[:success] = "Profile updated successfully"
-			redirect_to @user
+
+		if params[:user][:avatar].present?
+			if @user.update(user_params)
+				flash[:success] = "Profile updated successfully"
+				redirect_to @user
+			else
+				render "edit"
+			end
 		else
-			render "edit"
+			if @user.update(user_params_without_avatar)
+				flash[:success] = "Profile updated successfully"
+				redirect_to @user
+			else
+				render "edit"
+			end
 		end
 	end
 
@@ -56,6 +66,10 @@ class UsersController < ApplicationController
     def user_params 
       params.require(:user).permit(:name, :email, :phone, :address, :password, :password_confirmation, :avatar) 
     end
+
+	def user_params_without_avatar 
+		params.require(:user).permit(:name, :email, :phone, :address, :password, :password_confirmation) 
+	end
 
 	def logged_in_user
 		unless logged_in?

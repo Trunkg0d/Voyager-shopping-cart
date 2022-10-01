@@ -14,7 +14,7 @@
                     <% if @product.images?%>
                       <%= image_tag @product.images[0].thumb.url %>
                     <%else%>
-                      <%= image_tag "/assets/avatar/product.png", height:100, width:100%>
+                      <%= image_tag "https://wowmart.vn/wp-content/uploads/2020/10/null-image.png", height:100, width:100%>
                     <%end%>
 
                     <span class="image">
@@ -112,11 +112,6 @@
                     <%= f.submit yield(:product_btn), class: "btn btn-outline-dark mt-auto" %>
                   </div>
                 <% end %>
-              </div>
-              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                <img style="margin-left: 80px" src="https://media.baamboozle.com/uploads/images/210353/1611590474_164387"
-                  class="img-fluid" alt="Product image">
               </div>
             </div>
           </div>
