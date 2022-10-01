@@ -36,11 +36,20 @@ class ProductsController < ApplicationController
 
     def update
         @product = Product.find_by(id: params[:id], shop: current_shop)
-        if @product.update(product_params)
-            flash[:success] = "Product updated successfully."
-            redirect_to shop_path(current_shop)
+        if params[:product][:images].present?
+            if @product.update(product_params)
+                flash[:success] = "Product updated successfully."
+                redirect_to shop_path(current_shop)
+            else
+                render 'edit'
+            end
         else
-            render 'edit'
+            if @product.update(product_params_without_images)
+                flash[:success] = "Product updated successfully."
+                redirect_to shop_path(current_shop)
+            else
+                render 'edit'
+            end
         end
     end
 
@@ -156,5 +165,9 @@ class ProductsController < ApplicationController
     private
         def product_params
             params.fetch(:product, {}).permit(:name, :price, :quantity_remain, :description, images: [], category_ids:[], size_ids: [], color_ids: [])
+        end
+
+        def product_params_without_images
+            params.fetch(:product, {}).permit(:name, :price, :quantity_remain, :description, category_ids:[], size_ids: [], color_ids: [])
         end
 end
