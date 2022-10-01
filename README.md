@@ -53,3 +53,45 @@ Things you may want to cover:
     - store order to database
     - send email to shop, customer
 // List orders history of customer
+
+*********************************
+TEST:
+- User
+    + Sign up
+    + Activate mail
+    + Log in
+    + Log out
+    + Reset password
+    + Reset password mail
+    + Edit profile
+    + Create new shop
+    + View shop profile
+    + View product
+    + Add to cart item
+    + Update cart item
+    + Delete cart item
+    + Finish order (checkout)
+    + View order history
+- Shop
+    + Create new product
+    + Upload product images
+    + Add size, color, category to product
+    + Edit product:
+        ++ Edit product infor
+        ++ Edit product quantity
+        ++ Edit product status: Public, Sale
+    + Delete product
+- Homepage
+    + Search product by name (if product no public, it will not show)
+    + Filter product by shop name, by category and size
+    + Category page
+    + Order history
+    + Profile shop/ user
+    + Follow shop
+- Mailer
+    + Activate account
+    + Reset password
+    + Customer order
+    + Order mail to shop
+
+
