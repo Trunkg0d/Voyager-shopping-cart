@@ -1,28 +1,211 @@
 <%=render "layouts/header"%>
-<div class="shop-banner">
-  <div class="text-center py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0 ">
-      <%= image_tag "banner-category-top.webp", style: "width: 95%; height: 260px"%>
-  </div>
-  <div class="bottom-left fs-5 text-white w-50">
-      <h1>Latest Arrivals</h1>
-      <p style="color:white">
-          When it's time to head out and get your Kicks on, have a
-          look at our latest arrivals. Whether you're into Nike, 
-          Adidas, Dunks or New Balance, we really have 
-          something for everyone!
-  </div>
-</div>
-<div class="row justify-content-center mb-2">
-    <div class="col-md-7 site-section-heading text-center pt-4">
 
-    </div>
-</div>
-<div class="container px-4 px-lg-5 mt-4">
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-        <% @products.each do |product| %>
-            <% if product.public == 1 && filter(product,params[:brand],params[:size], params[:category]) %>
-                <%= render product %>
+<body class="">
+    <!-- Main Section-->
+    <section class="mt-0 ">
+        <!-- Category Top Banner -->
+        <div class="shop-banner">
+            <div class="text-center py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0 ">
+                <%= image_tag "banner-test.webp", style: "width: 95%; height: 260px"%>
+            </div>
+
+        </div>
+        <!-- Category Top Banner -->
+
+        <div class="container-fluid" data-aos="fade-in">
+            <!-- Category Toolbar-->
+            <div class="d-flex justify-content-between items-center pt-5 flex-column flex-lg-row" style="padding-left:1.5%">
+                <div>    
+                    <% @sum = 0 %>
+                    <% @products.each do |product| %>
+                        <% if product.public == 1 && filter(product,params[:brand],params[:size], params[:category]) %>
+                            <% @sum+=1 %>
+                        <% end %>
+                    <% end %>
+                    <h1 class="fw-bold fs-3 mb-5">Result (<%= @sum %>)</h1>
+                </div>
+                <div class="d-flex justify-content-end align-items-center mt-4 mt-lg-0 flex-column flex-md-row">
+            
+                    <!-- Filter Trigger-->
+                    <button class="btn btn-outline-dark p-3 me-md-3 d-flex align-items-center fs-7 lh-1 w-100 mb-2 mb-md-0 w-md-auto " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
+                        <i class="ri-equalizer-line me-2"></i> Filters
+                    </button>
+                    <!-- / Filter Trigger-->
+            
+                    <!-- Sort Options-->
+                        <select class="form-select form-select-sm border-0 bg-light p-3 pe-5 lh-1 fs-7">
+                            <option selected>Sort By</option>
+                            <option value="1">Hi Low</option>
+                            <option value="2">Low Hi</option>
+                            <option value="3">Name</option>
+                        </select>
+                    <!-- / Sort Options-->
+                </div>
+            </div>           
+
+        <!-- Products-->
+        <div class="container px-4 px-lg-5 mt-4">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <% @products.each do |product| %>
+                    <% if product.public == 1 && filter(product,params[:brand],params[:size], params[:category]) %>
+                        <%= render product %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+        <!-- / Products-->
+        
+        <!-- /Page Content -->
+    </section>
+    <!-- / Main Section-->
+
+    <!-- Footer -->
+    <footer class="border-top py-5 mt-4  ">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row">
+                <div>
+                    <ul class="list-unstyled">
+                        <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
+                                href="#"><i class="ri-instagram-fill"></i></a></li>
+                        <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
+                                href="#"><i class="ri-facebook-fill"></i></a></li>
+                        <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
+                                href="#"><i class="ri-twitter-fill"></i></a></li>
+                        <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
+                                href="#"><i class="ri-snapchat-fill"></i></a></li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-center justify-content-end flex-column flex-lg-row">
+                    <p class="small m-0 text-center text-lg-start">&copy; 2022 Voyager All Rights Reserved. Template by <a
+                            href="https://www.pixelrocket.store">Trunk Lee</a></p>
+                    <ul class="list-unstyled mb-0 ms-lg-4 mt-3 mt-lg-0 d-flex justify-content-end align-items-center">
+                        <li class="bg-light p-2 d-flex align-items-center justify-content-center me-2">
+                            <i class="pi pi-sm pi-paypal"></i></li>
+                        <li class="bg-light p-2 d-flex align-items-center justify-content-center me-2">
+                            <i class="pi pi-sm pi-mastercard"></i></li>
+                        <li class="bg-light p-2 d-flex align-items-center justify-content-center me-2">
+                            <i class="pi pi-sm pi-american-express"></i></li>
+                        <li class="bg-light p-2 d-flex align-items-center justify-content-center"><i
+                                class="pi pi-sm pi-visa"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>    <!-- / Footer-->
+    
+    <!-- Offcanvas Imports-->
+    <!-- Filters Offcanvas-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasFilters" aria-labelledby="offcanvasFiltersLabel">
+      <div class="offcanvas-header pb-0 d-flex align-items-center">
+        <h5 class="offcanvas-title" id="offcanvasFiltersLabel">Category Filters</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="d-flex flex-column justify-content-between w-100 h-100">
+    
+          <!-- Filters-->
+          <div>
+    
+            <!-- Price Filter -->
+            <div class="py-4 widget-filter widget-filter-price border-top">
+              <a class="small text-body text-decoration-none text-secondary-hover transition-all transition-all fs-6 fw-bolder d-block collapse-icon-chevron"
+                data-bs-toggle="collapse" href="#filter-modal-price" role="button" aria-expanded="true"
+                aria-controls="filter-modal-price">
+                Price
+              </a>
+              <div id="filter-modal-price" class="collapse show">
+                <div class="filter-price mt-6"></div>
+                <div class="d-flex justify-content-between align-items-center mt-7">
+                    <div class="input-group mb-0 me-2 border">
+                        <span class="input-group-text bg-transparent fs-7 p-2 text-muted border-0">$</span>
+                        <input type="number" min="00" max="1000" step="1" class="filter-min form-control-sm border flex-grow-1 text-muted border-0">
+                    </div>   
+                    <div class="input-group mb-0 ms-2 border">
+                        <span class="input-group-text bg-transparent fs-7 p-2 text-muted border-0">$</span>
+                        <input type="number" min="00" max="1000" step="1" class="filter-max form-control-sm flex-grow-1 text-muted border-0">
+                    </div>                
+                </div>          </div>
+            </div>
+            <!-- / Price Filter -->
+            <%= form_tag filter_path, :method => 'get' do %>
+            <!-- Brands Filter -->
+            <div class="py-4 widget-filter border-top">
+                <a class="small text-body text-decoration-none text-secondary-hover transition-all transition-all fs-6 fw-bolder d-block collapse-icon-chevron"
+                    data-bs-toggle="collapse" href="#filter-modal-brands" role="button" aria-expanded="true"
+                    aria-controls="filter-modal-brands">
+                    Brands
+                </a>
+                <div id="filter-modal-brands" class="collapse show">
+                    <div class="simplebar-wrapper">
+                        <div class="filter-options" data-pixr-simplebar>
+                            <% Shop.all.each.map{|shop| shop.name}.uniq.each do |brand| %>
+                                <div class="form-group form-check-custom mb-1">
+                                    <%= check_box("brand", "commands", {:multiple => true}, brand, nil) %>
+                                    <%= label_tag(:brand, "#{brand}") %>
+                                </div> 
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / Brands Filter -->
+    
+            <!-- Sizes Filter -->
+            <div class="py-4 widget-filter border-top">
+                <a class="small text-body text-decoration-none text-secondary-hover transition-all transition-all fs-6 fw-bolder d-block collapse-icon-chevron"
+                    data-bs-toggle="collapse" href="#filter-modal-sizes" role="button" aria-expanded="true"
+                    aria-controls="filter-modal-sizes">
+                    Sizes
+                </a>
+                <div id="filter-modal-sizes" class="collapse show">
+                    <div class="filter-options mt-3">
+                    <% Size.all.each do |size| %>
+                        <div class="form-group d-inline-block mr-2 mb-2 form-check-bg form-check-custom">
+                            <%= check_box("size", "commands", {:multiple => true}, size.name , nil) %>
+                            <%= label_tag(:size, "#{size.name}", class:"form-check-label fw-normal") %>
+                        </div>  
+                    <% end %>                                    
+                    </div>
+                </div>
+            </div>
+            <!-- / Sizes Filter -->
+    
+            <!-- Colour Filter -->
+            <div class="py-4 widget-filter border-top">
+                <a class="small text-body text-decoration-none text-secondary-hover transition-all transition-all fs-6 fw-bolder d-block collapse-icon-chevron"
+                    data-bs-toggle="collapse" href="#filter-modal-colour" role="button" aria-expanded="true"
+                    aria-controls="filter-modal-colour">
+                    Category
+                </a>
+                <div id="filter-modal-colour" class="collapse show">
+                    <div class="filter-options mt-3">
+                        <% Category.all.each do |category| %>
+                            <div class="form-group d-inline-block mr-1 mb-1 form-check-solid-bg-checkmark form-check-custom form-check-primary">
+                                <%= check_box("category", "commands", {:multiple => true}, category.name , nil) %>
+                                <%= label_tag(:category, "#{category.name}", class:"form-check-label fw-normal") %>
+                            </div>
+                        <% end %>                                    
+                    </div>
+                </div>
+            </div>
+            <!-- / Colour Filter -->
+          </div>
+          <!-- / Filters-->
+    
+          <!-- Filter Button-->
+          <div class="border-top pt-3">
+            <%= submit_tag "Done", class:"btn btn-dark mt-2 d-block hover-lift-sm hover-boxshadow" %>
             <% end %>
-        <% end %>
+          </div>
+          <!-- /Filter Button-->
+        </div>
+      </div>
     </div>
-</div>
+    <!-- Theme JS -->
+    <!-- Vendor JS -->
+    <script src="./assets/js/vendor.bundle.js"></script>
+    
+    <!-- Theme JS -->
+    <script src="./assets/js/theme.bundle.js"></script>
+</body>
