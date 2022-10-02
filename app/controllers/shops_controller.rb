@@ -50,11 +50,6 @@ class ShopsController < ApplicationController
     def destroy
     end
 
-    #Shop product
-    def add_product
-        @product = current_shop.products.build if logged_in?
-    end
-
     private
         def shop_params
             params.require(:shop).permit(:name, :description, :avatar, :user_id)

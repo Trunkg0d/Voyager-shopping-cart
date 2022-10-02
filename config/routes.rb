@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   
   #shop
   get '/shop_signup', to: 'shops#new'
-  get '/shop_add_product', to: 'shops#add_product'
 
   #product
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
