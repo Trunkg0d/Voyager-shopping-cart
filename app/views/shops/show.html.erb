@@ -39,7 +39,7 @@
                 <% if @shop.products.any? %>
                     <% @products.each do |product| %>
                         <% if product.public == 1 %>
-                            <%= render @products %>
+                            <%= render product %>
                         <% end %>
                     <% end %>
                 <% end %>
