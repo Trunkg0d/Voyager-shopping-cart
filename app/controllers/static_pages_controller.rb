@@ -19,7 +19,7 @@ class StaticPagesController < ApplicationController
   end
 
   def search
-    @query = Product.ransack(params[:q])
+    @query = Product.where(public: 1).ransack(params[:q])
     @products = @query.result(distinct: true)
   end
 end

@@ -5,12 +5,16 @@
     </div>
 </div>
 <% @categories.each do |category| %>
-    <% if category.products.any? %>
+    <% if category.products.any? && category.products.first.public == 1 %>
         <h3 style="text-align: center"><%= category.name %></h3>
         <section class="py-5">
             <div class="container px-4 px-lg-5 ">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <%= render category.products %>
+                    <% category.products.each do |product| %>
+                        <% if product.public == 1 %>
+                            <%= render product %>
+                        <% end %>
+                    <% end %>
                </div>
             </div>
         </section>
