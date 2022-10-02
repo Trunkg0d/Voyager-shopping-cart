@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     	@product = Product.new(product_params)
         if product_params.present?
             @product.validate
-          end 
+        end 
   	end
 
     def create
