@@ -9,7 +9,7 @@ User.create!(name: "Example User",
     avatar: File.open(File.join(Rails.root, 'app', 'assets','images', 'men.webp'))
 )
 
-15.times do |n|
+10.times do |n|
     name = "Trunk Lee"
     email = "example-#{n+1}@railstutorial.org"
     password = "password"
@@ -20,7 +20,8 @@ User.create!(name: "Example User",
     password: password,
     password_confirmation: password,
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    avatar: File.open(File.join(Rails.root, 'app', 'assets','images', 'women.webp')))
 end
 
 users = User.all
@@ -100,3 +101,8 @@ User.create!(name: "Example User",
     activated_at: Time.zone.now,
     avatar: File.open(File.join(Rails.root, 'app', 'assets','images', 'men.webp'))
 )
+
+for i in 1...44
+    ProductSize.create!(product_id: i, size_id: 5, quantity: 10)
+    ProductSize.create!(product_id: i, size_id: 7, quantity: 10)
+end
