@@ -58,38 +58,44 @@ class CartSessionsController < ApplicationController
   end
 
   def checkout
-    @order = Order.new(@cart_session.attributes)
+    if !@cart_session.cart_items[0].nil?
+      @order = Order.new(@cart_session.attributes)
 
-    if check_quantity_cart(@cart_session)[0] == false 
-      flash[:danger] = "Don't enough size for #{check_quantity_cart(@cart_session)[1].product.name}"
-      redirect_to root_path
-    else
-      if @order.save
-        @cart_session.cart_items.each do |cart_item|
-          OrderItem.create(order_item_attrs(@order, cart_item))
-          cart_item.product.product_sizes.each do |product_size|
-            if product_size.size.name == cart_item.size
-              number = product_size.quantity 
-              number -= cart_item.quantity
-              product_size.update_attribute(:quantity, number)
-            end
-          end
-          total = 0
-          cart_item.product.product_sizes.each do |product_size|
-            total += product_size.quantity
-          end
-          cart_item.product.update_attribute(:quantity_remain, total)
-        end
-        @cart_session.destroy
-        flash[:success] = "Order was successfully, please check your mail to confirm"
+      if check_quantity_cart(@cart_session)[0] == false 
+        flash[:danger] = "Don't enough size for #{check_quantity_cart(@cart_session)[1].product.name}"
         redirect_to root_path
-        @order.order_items.each do |order_item|
-          order_item.send_shop_order_email
-        end
-        @order.user.send_customer_order_email
       else
-        flash[:danger] = "Order was rejected"
+        if @order.save
+          @cart_session.cart_items.each do |cart_item|
+            OrderItem.create(order_item_attrs(@order, cart_item))
+            cart_item.product.product_sizes.each do |product_size|
+              if product_size.size.name == cart_item.size
+                number = product_size.quantity 
+                number -= cart_item.quantity
+                product_size.update_attribute(:quantity, number)
+              end
+            end
+            total = 0
+            cart_item.product.product_sizes.each do |product_size|
+              total += product_size.quantity
+            end
+            cart_item.product.update_attribute(:quantity_remain, total)
+          end
+          @cart_session.destroy
+          flash[:success] = "Order was successfully, please check your mail to confirm"
+          redirect_to root_path
+          @order.order_items.each do |order_item|
+            order_item.send_shop_order_email
+          end
+          @order.user.send_customer_order_email
+        else
+          flash[:danger] = "Order was rejected"
+          redirect_to cart_session_path(current_cart_session)
+        end
       end
+    else
+      flash[:danger] = "Your cart is empty"
+      redirect_to cart_session_path(current_cart_session)
     end
   end
 
