@@ -7,7 +7,12 @@ class CartSessionsController < ApplicationController
 
   # GET /cart_sessions/1 or /cart_sessions/1.json
   def show
-    
+    @cart_session = current_user.cart_sessions.last
+    sum = 0
+    @cart_session.cart_items.each do |cart_item|
+      sum+=cart_item.product.price * cart_item.quantity
+    end
+    @cart_session.update_attribute(:sum_money, sum)
   end
 
   # GET /cart_sessions/new
