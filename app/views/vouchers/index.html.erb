@@ -1,0 +1,23 @@
+<%= render "layouts/header" %>
+<div class="container">
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Code</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @vouchers.each do |voucher| %>
+            <tr>
+                <th scope="row"><%= voucher.id %></th>
+                <td><%= voucher.code %></td>
+                <td><%= voucher.quantity %></td>
+                <td><%= button_to "Delete voucher", voucher_path(voucher), method: :delete, class: "button" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>

@@ -157,7 +157,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_074548) do
   create_table "vouchers", force: :cascade do |t|
     t.string "code"
     t.bigint "shop_id"
-    t.integer "quantity"
+    t.integer "percent", default: 0
+    t.integer "quantity", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_vouchers_on_shop_id"

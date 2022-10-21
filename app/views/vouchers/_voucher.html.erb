@@ -1,0 +1,29 @@
+<li style="list-style: none" id="voucher-<%= voucher.id %>">
+    <div class="col mb-5">
+        <div class="card h-100">
+            <!-- Product image-->
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">Voucher <%= voucher.id%></h5>
+                    <h6 class="fw-bolder">Shop: <%= link_to "#{voucher.shop.name}", shop_path(voucher.shop) %></h6>
+                    <h6><%= voucher.percent %> % off code</h6>
+                    <h6>Quantity: <%= voucher.quantity %> remain</h6>
+                </div>
+            </div>
+
+            <% if !current_shop.nil? %>
+                <% if request.path == shop_path(current_shop.id) %>
+                    <% if voucher.shop == current_shop %>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <%= button_to "Delete", voucher_path(voucher), method: :delete, class:"btn btn-outline-dark mt-auto", style: "width:105.25px" %>
+                            </div>
+                        </div>
+                    <% end %>
+                <% end %>        
+            <% end %>
+        </div>
+    </div>
+</li>
+
