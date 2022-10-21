@@ -51,6 +51,19 @@
     <% end %>
 </section>
 
+<section class="py-5">
+    <h3 style="text-align: center">Vouchers (<%= @shop.vouchers.count %>)</h3>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <% if @shop.vouchers.any? %>
+                <% @shop.vouchers.each do |voucher| %>
+                    <%= render voucher %>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</section>
+
 <!-- Footer-->
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Voyager - Your Life Your Choice</p></div>

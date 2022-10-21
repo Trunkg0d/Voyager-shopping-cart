@@ -50,4 +50,5 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :categories
   resources :orders
+  resources :vouchers
 end
