@@ -3,4 +3,5 @@ class Shop < ApplicationRecord
     has_many :products, dependent: :destroy
     validates :name, presence: true
     validates :description, presence: true
+    has_many :vouchers
 end

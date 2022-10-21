@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_052928) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_21_074548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -152,6 +152,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_052928) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+  end
+
+  create_table "vouchers", force: :cascade do |t|
+    t.string "code"
+    t.bigint "shop_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_vouchers_on_shop_id"
   end
 
 end
