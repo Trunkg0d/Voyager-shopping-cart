@@ -1,97 +1,26 @@
-# README
+# Voyager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Voyager is an online shoe shopping site, products from big brands like Nike, Adidas, New Balance, ... You can be both a customer and a shop owner in this very website.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-* System dependencies
+1. You should install and know to use Docker
+2. Clone the repo
+    ```sh
+    git clone https://github.com/Trunkg0d/Hopee-shopping-cart.git
+    ```
+3. Run docker
+    ```sh
+    docker compose up --build
+    ```
+4. Create database if database is not present
+## Usage
+To log in and use the web, you can use the account below
+- Account name: example@railstutorial.org
+- Password: foobar
 
-* Configuration
+## Contributing
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-* Features for Shopping Cart
-- Sign up shop
-- Signin/ Signout with user account
-- Edit shop infor
-- Register shop product
-- Edit product
-- Destroy product
-- Upload many images to product
-// List order of customers //
-
-- Model Category 
-- Model Category many to many with product through product_category
-- Using db seed to set master data
-
-- Home page 
-- List categories: each categories show 5 latest products
-// Homepage: menu categories: Menu of web
-- Category page: List all products of categories
-- Product details
-- Search product by name: List product by name 
-
-- Sign up customer
-- Signin/Signout customer
-- Edit customer profile
-- Add to cart
-- Update date cart
-- Finish order:
-    - store order to database
-    - send email to shop, customer
-// List orders history of customer
-
-*********************************
-TEST:
-- User
-    + Sign up
-    + Activate mail
-    + Log in
-    + Log out
-    + Reset password
-    + Reset password mail
-    + Edit profile
-    + Create new shop
-    + View shop profile
-    + View product
-    + Add to cart item
-    + Update cart item
-    + Delete cart item
-    + Finish order (checkout)
-    + View order history
-- Shop
-    + Create new product
-    + Upload product images
-    + Add size, color, category to product
-    + Edit product:
-        ++ Edit product infor
-        ++ Edit product quantity
-        ++ Edit product status: Public, Sale
-    + Delete product
-- Homepage
-    + Search product by name (if product no public, it will not show)
-    + Filter product by shop name, by category and size
-    + Category page
-    + Order history
-    + Profile shop/ user
-    + Follow shop
-- Mailer
-    + Activate account
-    + Reset password
-    + Customer order
-    + Order mail to shop
-
-
+This is my internship project, working alone for more than 2 weeks.
