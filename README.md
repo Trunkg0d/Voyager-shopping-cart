@@ -12,18 +12,18 @@ Voyager is an online shoe shopping site, products from big brands like Nike, Adi
 3. Run docker
     - Note that the project uses ruby 3.1.2 and postgres 14.5, you should to check it in Dockerfile and docker-compose.yml
     - Run the following command
-    ```sh
-    docker compose up --build
-    ```
+        ```sh
+        docker compose up --build
+        ```
 4. Create database if database is not present
     - Use another terminal, cd to the root of the project and do the command below
-    ```sh
-    docker compose run web bash
-    ```
+        ```sh
+        docker compose run web bash
+        ```
     - Then
-    ```sh
-    rails db:create db:migrate
-    ```
+        ```sh
+        rails db:create db:migrate
+        ```
 ## Usage
 To log in and use the web, you can use the account below
 - Account name: example@railstutorial.org
