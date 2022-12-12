@@ -1,6 +1,6 @@
 # Voyager
 
-Voyager is an online shoe shopping site, products from big brands like Nike, Adidas, New Balance, ... You can be both a customer and a shop owner in this very website.
+Voyager is an online shoes shopping site, products from big brands like Nike, Adidas, New Balance, ... You can be both a customer and a shop owner in this very website.
 
 ## Installation
 
@@ -28,7 +28,7 @@ Voyager is an online shoe shopping site, products from big brands like Nike, Adi
 To log in and use the web, you can use the account below
 - Account name: example@railstutorial.org
 - Password: foobar
-
+- You can also create the new account, but it requires account confirmation through email and I use mailtrap for this project, so I can not check your email often
 ## Contributing
 
-This is my internship project, working alone for more than 2 weeks.
+This is my internship project, working alone for more than 2 weeks. All of the project I use Ruby on Rails for Backend; HTML, CSS, Bootstrap for Frontend and also use Docker to setup project.
