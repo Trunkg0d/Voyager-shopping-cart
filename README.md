@@ -22,8 +22,9 @@ Voyager is an online shoes shopping site, products from big brands like Nike, Ad
         ```
     - Then
         ```sh
-        rails db:create db:migrate
+        rails db:create db:migrate db:seed
         ```
+5. Finally, you can view and use the website via http://localhost:3000/
 ## Usage
 To log in and use the web, you can use the account below
 - Account name: example@railstutorial.org
