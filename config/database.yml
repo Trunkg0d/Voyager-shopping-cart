@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: hopee_shopping_cart_production
-  username: hopee_shopping_cart
-  password: <%= ENV["HOPEE_SHOPPING_CART_DATABASE_PASSWORD"] %>
+  # database: hopee_shopping_cart_production
+  # username: hopee_shopping_cart
+  # password: <%= ENV["HOPEE_SHOPPING_CART_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
